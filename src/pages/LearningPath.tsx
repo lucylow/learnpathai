@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import PathStepCard from "@/components/learning/PathStepCard";
 import { usePath } from "@/hooks/usePath";
 import { track } from "@/utils/telemetry";
 import { Loader2, RefreshCw, Sparkles } from "lucide-react";
@@ -22,64 +21,41 @@ export default function LearningPath() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
         <div className="mx-auto max-w-7xl px-6 py-4 flex justify-between items-center">
           <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             LearnPath AI
           </Link>
           <nav className="flex gap-6">
-            <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
-              Home
-            </Link>
-            <Link to="/dashboard" className="text-muted-foreground hover:text-foreground transition-colors">
-              Dashboard
-            </Link>
-            <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">
-              About
-            </Link>
+            <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">Home</Link>
+            <Link to="/dashboard" className="text-muted-foreground hover:text-foreground transition-colors">Dashboard</Link>
+            <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">About</Link>
           </nav>
         </div>
       </header>
 
-      {/* Page Header */}
       <div className="border-b border-border bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-6 py-12 max-w-4xl">
-          <h1 className="text-4xl font-bold text-foreground mb-3">
-            Adaptive Learning Path
-          </h1>
-          <p className="text-xl text-muted-foreground">
-            Your personalized learning journey, powered by AI
-          </p>
+          <h1 className="text-4xl font-bold text-foreground mb-3">Adaptive Learning Path</h1>
+          <p className="text-xl text-muted-foreground">Your personalized learning journey, powered by AI</p>
         </div>
       </div>
 
       <div className="container mx-auto px-6 py-8 max-w-4xl">
-        {/* Demo Controls */}
         <Card className="mb-6 border-primary/20 bg-primary/5">
           <CardHeader>
             <div className="flex items-center gap-2">
               <Sparkles className="h-5 w-5 text-primary" />
               <CardTitle>Interactive Demo</CardTitle>
             </div>
-            <CardDescription>
-              Simulate quiz attempts to see how the learning path adapts in real-time
-            </CardDescription>
+            <CardDescription>Simulate quiz attempts to see how the learning path adapts in real-time</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-2">
-              <Button 
-                onClick={() => simulateQuizFailure("loops")}
-                variant="outline"
-                size="sm"
-              >
+              <Button onClick={() => simulateQuizFailure("loops")} variant="outline" size="sm">
                 Fail "Loops" Quiz
               </Button>
-              <Button 
-                onClick={() => simulateQuizFailure("functions")}
-                variant="outline"
-                size="sm"
-              >
+              <Button onClick={() => simulateQuizFailure("functions")} variant="outline" size="sm">
                 Fail "Functions" Quiz
               </Button>
               <Button 
@@ -103,7 +79,6 @@ export default function LearningPath() {
           </CardContent>
         </Card>
 
-        {/* Overall Progress */}
         {data && (
           <Card className="mb-6">
             <CardHeader>
@@ -125,19 +100,44 @@ export default function LearningPath() {
           </Card>
         )}
 
-        {/* Loading State */}
         {isLoading && (
           <div className="flex items-center justify-center py-12">
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
           </div>
         )}
 
-        {/* Learning Path Steps */}
         {data && (
           <div className="space-y-4">
             <h2 className="text-xl font-semibold">Your Learning Path</h2>
             {data.path.map((step, index) => (
-              <PathStepCard key={step.concept} step={step} index={index} />
+              <Card key={step.concept}>
+                <CardHeader>
+                  <div className="flex items-start gap-3">
+                    <Badge variant="outline">{index + 1}</Badge>
+                    <div className="flex-1">
+                      <CardTitle className="text-lg">{step.concept}</CardTitle>
+                      <div className="mt-2 text-sm text-muted-foreground">
+                        Mastery: {Math.round(step.mastery * 100)}%
+                      </div>
+                      {step.reasoning && (
+                        <p className="mt-2 text-sm text-muted-foreground">{step.reasoning}</p>
+                      )}
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    {step.resources.map((resource) => (
+                      <div key={resource.id} className="p-3 border rounded-lg">
+                        <div className="font-medium">{resource.title}</div>
+                        <div className="text-sm text-muted-foreground">
+                          {resource.type} • {resource.duration} min
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         )}
