@@ -20,6 +20,7 @@ const assessmentsRoute = require("./routes/assessments");
 const mockExternalRoute = require("./routes/mock-external");
 const challengesRoute = require("./routes/challenges");
 const gamifyRoute = require("./routes/gamify");
+const blockchainRoute = require("./routes/blockchain");
 
 // Socket.IO collaboration server
 const CollaborationServer = require("./sockets/collaboration");
@@ -47,6 +48,7 @@ async function main() {
   app.use("/api/mock-external", mockExternalRoute);
   app.use("/api/challenges", challengesRoute);
   app.use("/api/gamify", gamifyRoute);
+  app.use("/api/blockchain", blockchainRoute);
 
   // health check root
   app.get("/", (req, res) => res.json({ 
@@ -60,7 +62,8 @@ async function main() {
       "ai-generated-assessments",
       "explainable-recommendations",
       "micro-challenges",
-      "gamification"
+      "gamification",
+      "blockchain-certificates"
     ],
     ts: new Date().toISOString() 
   }));

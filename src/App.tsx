@@ -30,6 +30,7 @@ const JudgeDemo = lazy(() => import("./pages/JudgeDemo"));
 const CollaborativeLearning = lazy(() => import("./pages/CollaborativeLearning"));
 const AIFeaturesDemo = lazy(() => import("./pages/AIFeaturesDemo"));
 const EngagingDemo = lazy(() => import("./pages/EngagingDemo"));
+const GamificationDemo = lazy(() => import("./pages/GamificationDemo"));
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -57,6 +58,7 @@ const App = () => (
               <Route path="/collaborative-learning" element={<CollaborativeLearning />} />
               <Route path="/ai-features-demo" element={<AIFeaturesDemo />} />
               <Route path="/engaging-demo" element={<EngagingDemo />} />
+              <Route path="/gamification-demo" element={<GamificationDemo />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

@@ -17,6 +17,7 @@
   "dependencies": {
     "@formatjs/intl-pluralrules": "^5.4.6",
     "@formatjs/intl-relativetimeformat": "^11.4.13",
+    "@google/generative-ai": "^0.24.1",
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-alert-dialog": "^1.1.14",
@@ -67,6 +68,7 @@
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.3.0",
+    "react-confetti": "^6.4.0",
     "react-countup": "^6.5.3",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",
