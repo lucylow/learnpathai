@@ -23,7 +23,7 @@ export interface ConceptNode {
   title: string;            // e.g. "Recursion Basics"
   prerequisites: string[];   // concept IDs
   description?: string;
-  metadata?: Record<string, any>;  // extra info (subject, tags, etc.)
+  metadata?: Record<string, string | number | boolean>;  // extra info (subject, tags, etc.)
 }
 
 /**
@@ -90,6 +90,17 @@ export interface KnowledgeGraphData {
  * MasteryMap - maps concept IDs to mastery scores
  */
 export type MasteryMap = Record<string, number>;
+
+/**
+ * RawConceptData - raw knowledge graph concept data structure
+ */
+export interface RawConceptData {
+  title?: string;
+  prereqs?: string[];
+  prerequisites?: string[];
+  description?: string;
+  [key: string]: string | string[] | number | boolean | undefined;
+}
 
 /**
  * NodeScore - internal structure for path planning

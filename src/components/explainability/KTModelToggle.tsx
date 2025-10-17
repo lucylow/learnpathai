@@ -176,7 +176,7 @@ export const KTModelToggle: React.FC<KTModelToggleProps> = ({
       </CardHeader>
 
       <CardContent>
-        <Tabs value={activeModel} onValueChange={(val) => setActiveModel(val as any)}>
+        <Tabs value={activeModel} onValueChange={(val) => setActiveModel(val as 'beta' | 'dkt' | 'bkt_irt')}>
           <TabsList className="grid w-full grid-cols-3 mb-4">
             <TabsTrigger value="beta" className="text-sm">
               <Shield className="h-4 w-4 mr-1" />

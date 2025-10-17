@@ -78,24 +78,24 @@ const FeaturesGrid = () => {
   };
 
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
             Powerful Learning Features
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto px-4">
             Everything you need to accelerate your learning journey, powered by AI
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -106,17 +106,17 @@ const FeaturesGrid = () => {
               whileHover={{ y: -8, scale: 1.02 }}
               className="group cursor-pointer"
             >
-              <div className="relative h-full bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300">
+              <div className="relative h-full bg-white rounded-2xl p-5 sm:p-6 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300">
                 {/* Icon */}
-                <div className={`relative mb-4 inline-flex p-3 rounded-xl bg-gradient-to-br ${getColorClasses(feature.color)} text-white group-hover:scale-110 transition-transform duration-300`}>
-                  <feature.icon className="w-6 h-6" />
+                <div className={`relative mb-3 sm:mb-4 inline-flex p-2.5 sm:p-3 rounded-xl bg-gradient-to-br ${getColorClasses(feature.color)} text-white group-hover:scale-110 transition-transform duration-300`}>
+                  <feature.icon className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
 
                 {/* Content */}
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
                   {feature.description}
                 </p>
 
@@ -133,16 +133,16 @@ const FeaturesGrid = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-12 sm:mt-16"
         >
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-200">
-            <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 sm:p-8 border border-blue-200">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">
               Ready to Transform Your Learning?
             </h3>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 max-w-2xl mx-auto px-4">
               Join thousands of students who are already accelerating their learning with AI
             </p>
-            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto">
               Start Your Journey Today
             </button>
           </div>

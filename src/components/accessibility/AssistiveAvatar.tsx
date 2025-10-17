@@ -26,6 +26,12 @@ interface AvatarMessage {
   emotion?: 'happy' | 'thinking' | 'concerned' | 'excited';
 }
 
+interface GuidanceContext {
+  currentTopic: string;
+  difficulty: number;
+  progress: number;
+}
+
 export const AssistiveAvatar: React.FC = () => {
   const { profile, multiModalService } = useAccessibility();
   const [isActive, setIsActive] = useState(true);
@@ -262,7 +268,7 @@ export const AssistiveAvatar: React.FC = () => {
 export const useAssistiveAvatar = () => {
   const [avatarRef, setAvatarRef] = useState<{
     showMessage: (message: AvatarMessage) => void;
-    provideGuidance: (context: any) => void;
+    provideGuidance: (context: GuidanceContext) => void;
     speak: (text: string) => Promise<void>;
   } | null>(null);
 

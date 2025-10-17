@@ -61,7 +61,7 @@ serve(async (req: Request) => {
 
     // Generate contextual explanation
     let explanation = ''
-    let highlight = evidenceSnippet
+    const highlight = evidenceSnippet
     let confidence = 0.85
 
     if (recentAttempts.length > 0) {

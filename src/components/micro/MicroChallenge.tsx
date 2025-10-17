@@ -26,10 +26,24 @@ interface ChallengeResult {
   explanation: string;
 }
 
+interface ChallengeResults {
+  score: number;
+  feedback: string;
+  correct: number;
+  total: number;
+  totalQuestions?: number;
+  correctAnswers?: number;
+  timeSpent: number;
+  xpEarned: number;
+  passed: boolean;
+  badges?: Array<{id: string; name: string; icon: string}>;
+  detailedResults: ChallengeResult[];
+}
+
 interface MicroChallengeProps {
   concept: string;
   level?: string;
-  onComplete?: (results: any) => void;
+  onComplete?: (results: ChallengeResults) => void;
 }
 
 const MicroChallenge: React.FC<MicroChallengeProps> = ({ 
@@ -43,7 +57,7 @@ const MicroChallenge: React.FC<MicroChallengeProps> = ({
   const [loading, setLoading] = useState(true);
   const [timeSpent, setTimeSpent] = useState(0);
   const [showResults, setShowResults] = useState(false);
-  const [results, setResults] = useState<any>(null);
+  const [results, setResults] = useState<ChallengeResults | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -79,9 +93,9 @@ const MicroChallenge: React.FC<MicroChallengeProps> = ({
       setAnswers({});
       setTimeSpent(0);
       setShowResults(false);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Failed to fetch challenges:', error);
-      setError(error.message || 'Failed to load challenges. Please try again.');
+      setError(error instanceof Error ? error.message : 'Failed to load challenges. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -250,7 +264,7 @@ const MicroChallenge: React.FC<MicroChallengeProps> = ({
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
                 <h3 className="font-semibold text-yellow-900 mb-2">Badges Earned! 🏆</h3>
                 <div className="space-y-2">
-                  {results.badges.map((badge: any, index: number) => (
+                  {results.badges.map((badge: {id: string; name: string; icon: string}, index: number) => (
                     <div key={index} className="flex items-center gap-2">
                       <Badge variant="outline" className={`badge-${badge.rarity}`}>
                         {badge.name}

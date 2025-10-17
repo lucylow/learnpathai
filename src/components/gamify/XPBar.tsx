@@ -101,7 +101,7 @@ const XPBar: React.FC<XPBarProps> = ({
       origin: { y: 0.7 }
     };
 
-    function fire(particleRatio: number, opts: any) {
+    function fire(particleRatio: number, opts: Record<string, number | {x: number; y: number}>) {
       confetti({
         ...defaults,
         ...opts,

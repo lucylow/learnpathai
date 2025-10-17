@@ -33,14 +33,14 @@ export interface EvidenceData {
     step: number;
     stage: string;
     description: string;
-    [key: string]: any;
+    [key: string]: string | number | boolean | undefined;
   }>;
   evidence: {
     events: Array<{
       timestamp: string;
       action: string;
       object: string;
-      result: any;
+      result: string | number | boolean | null;
     }>;
     resources: Array<{
       id: string;

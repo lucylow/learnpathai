@@ -31,24 +31,24 @@ const ValueProps = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
             Why LearnPathAI Works
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto px-4">
             Traditional learning is one-size-fits-all. We build personalized paths that adapt to you.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -59,20 +59,20 @@ const ValueProps = () => {
               whileHover={{ y: -5, scale: 1.02 }}
               className="group relative"
             >
-              <div className="relative bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 overflow-hidden">
+              <div className="relative bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 overflow-hidden">
                 {/* Gradient Background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
                 
                 {/* Icon */}
-                <div className={`relative mb-6 inline-flex p-3 rounded-xl bg-gradient-to-br ${feature.color} text-white`}>
-                  <feature.icon className="w-6 h-6" />
+                <div className={`relative mb-4 sm:mb-6 inline-flex p-2.5 sm:p-3 rounded-xl bg-gradient-to-br ${feature.color} text-white`}>
+                  <feature.icon className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                   {feature.description}
                 </p>
 
@@ -91,7 +91,7 @@ const ValueProps = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center"
+          className="mt-12 sm:mt-16 lg:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center"
         >
           {[
             { number: '10K+', label: 'Active Students' },
@@ -99,11 +99,11 @@ const ValueProps = () => {
             { number: '94%', label: 'Completion Rate' },
             { number: '4.9/5', label: 'Student Rating' },
           ].map((stat, index) => (
-            <div key={stat.label} className="space-y-2">
-              <div className="text-3xl lg:text-4xl font-bold text-gray-900">
+            <div key={stat.label} className="space-y-1 sm:space-y-2">
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
                 {stat.number}
               </div>
-              <div className="text-gray-600 font-medium">
+              <div className="text-sm sm:text-base text-gray-600 font-medium">
                 {stat.label}
               </div>
             </div>

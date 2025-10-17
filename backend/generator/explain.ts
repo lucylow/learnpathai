@@ -161,7 +161,7 @@ export function explainRecommendations(
   mastery: Record<string, number>
 ): string {
   if (recommendations.length === 0) {
-    return 'Great work! You've completed all available concepts in this path.';
+    return 'Great work! You have completed all available concepts in this path.';
   }
 
   if (recommendations.length === 1) {
@@ -254,13 +254,13 @@ export function generateMotivationalMessage(
   if (recentImprovement > 0.2) {
     return '🎉 Amazing progress! You improved significantly in your recent practice.';
   } else if (recentImprovement > 0.1) {
-    return '🌟 Great work! You're steadily improving your mastery.';
+    return '🌟 Great work! You are steadily improving your mastery.';
   } else if (avgMastery > 0.8) {
-    return '🏆 Outstanding! You're mastering these concepts at an impressive rate.';
+    return '🏆 Outstanding! You are mastering these concepts at an impressive rate.';
   } else if (avgMastery > 0.6) {
-    return '💪 You're doing well! Keep practicing to reach mastery.';
+    return '💪 You are doing well! Keep practicing to reach mastery.';
   } else if (avgMastery > 0.4) {
-    return '📈 Solid progress! You're building strong foundations.';
+    return '📈 Solid progress! You are building strong foundations.';
   } else {
     return '🚀 Every expert was once a beginner. Keep learning!';
   }

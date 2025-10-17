@@ -25,7 +25,7 @@ export const BadgeViewer: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selectedBadge, setSelectedBadge] = useState<Badge | null>(null);
-  const [verificationResult, setVerificationResult] = useState<any>(null);
+  const [verificationResult, setVerificationResult] = useState<{isValid: boolean; error?: string} | null>(null);
   const [tokenBalance, setTokenBalance] = useState<string>('0');
 
   useEffect(() => {
@@ -45,9 +45,9 @@ export const BadgeViewer: React.FC = () => {
       const studentBadges = await blockchainService.getStudentBadges(account);
       setBadges(studentBadges);
       console.log(`✅ Loaded ${studentBadges.length} badges`);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Error loading badges:', err);
-      setError(err.message || 'Failed to load badges');
+      setError(err instanceof Error ? err.message : 'Failed to load badges');
     } finally {
       setLoading(false);
     }
@@ -69,9 +69,9 @@ export const BadgeViewer: React.FC = () => {
       setSelectedBadge(badge);
       const result = await blockchainService.verifyBadge(badge.tokenId);
       setVerificationResult(result);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Verification failed:', err);
-      setVerificationResult({ isValid: false, error: err.message });
+      setVerificationResult({ isValid: false, error: err instanceof Error ? err.message : 'Verification failed' });
     }
   };
 
@@ -312,9 +312,9 @@ const BadgeCard: React.FC<BadgeCardProps> = ({ badge, onVerify, onShare, onDownl
         {badge.metadata?.attributes && (
           <div className="flex flex-wrap gap-2 mb-4">
             {badge.metadata.attributes
-              .filter((attr: any) => !['evidence_hash', 'issuer'].includes(attr.trait_type))
+              .filter((attr: {trait_type: string; value: string | number}) => !['evidence_hash', 'issuer'].includes(attr.trait_type))
               .slice(0, 3)
-              .map((attr: any, index: number) => (
+              .map((attr: {trait_type: string; value: string | number}, index: number) => (
                 <span
                   key={index}
                   className="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs rounded-full font-medium"

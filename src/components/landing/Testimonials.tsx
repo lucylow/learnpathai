@@ -56,26 +56,26 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-slate-900 to-purple-900">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 to-purple-900">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4">
             Loved by Students
           </h2>
-          <p className="text-xl text-purple-200 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-purple-200 max-w-2xl mx-auto px-4">
             Join thousands of learners who transformed their skills with LearnPathAI
           </p>
         </motion.div>
 
         <div className="relative">
           {/* Testimonial Carousel */}
-          <div className="relative h-96">
+          <div className="relative min-h-[28rem] sm:min-h-[24rem]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentTestimonial}
@@ -85,29 +85,29 @@ const Testimonials = () => {
                 transition={{ duration: 0.5 }}
                 className="absolute inset-0"
               >
-                <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/20">
-                  <Quote className="w-12 h-12 text-purple-300 mb-6" />
+                <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 sm:p-8 lg:p-12 border border-white/20">
+                  <Quote className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-purple-300 mb-4 sm:mb-6" />
                   
-                  <div className="flex flex-col lg:flex-row gap-8 items-center">
+                  <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 items-center">
                     {/* Content */}
                     <div className="flex-1">
-                      <p className="text-xl lg:text-2xl text-white leading-relaxed mb-6">
+                      <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-white leading-relaxed mb-4 sm:mb-6">
                         "{testimonials[currentTestimonial].content}"
                       </p>
                       
                       {/* Rating */}
-                      <div className="flex items-center gap-1 mb-4">
+                      <div className="flex items-center gap-1 mb-3 sm:mb-4">
                         {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                          <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-yellow-400 text-yellow-400" />
                         ))}
                       </div>
                       
                       {/* Author Info */}
                       <div>
-                        <div className="text-white font-semibold text-lg">
+                        <div className="text-white font-semibold text-base sm:text-lg">
                           {testimonials[currentTestimonial].name}
                         </div>
-                        <div className="text-purple-200">
+                        <div className="text-purple-200 text-sm sm:text-base">
                           {testimonials[currentTestimonial].role} • {testimonials[currentTestimonial].company}
                         </div>
                       </div>
@@ -115,7 +115,7 @@ const Testimonials = () => {
 
                     {/* Avatar */}
                     <div className="flex-shrink-0">
-                      <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-3xl">
+                      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-2xl sm:text-3xl">
                         {testimonials[currentTestimonial].image}
                       </div>
                     </div>
@@ -126,23 +126,23 @@ const Testimonials = () => {
           </div>
 
           {/* Navigation Controls */}
-          <div className="flex justify-center items-center gap-4 mt-8">
+          <div className="flex justify-center items-center gap-3 sm:gap-4 mt-6 sm:mt-8">
             <button
               onClick={prevTestimonial}
-              className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+              className="p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
             
             {/* Dots Indicator */}
-            <div className="flex gap-2">
+            <div className="flex gap-1.5 sm:gap-2">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-all ${
+                  className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
                     index === currentTestimonial
-                      ? 'bg-white w-8'
+                      ? 'bg-white w-6 sm:w-8'
                       : 'bg-white/30'
                   }`}
                 />
@@ -151,9 +151,9 @@ const Testimonials = () => {
 
             <button
               onClick={nextTestimonial}
-              className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+              className="p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
           </div>
         </div>
@@ -164,7 +164,7 @@ const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center"
+          className="mt-12 sm:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center"
         >
           {[
             { number: '10K+', label: 'Happy Students' },
@@ -172,11 +172,11 @@ const Testimonials = () => {
             { number: '96%', label: 'Success Rate' },
             { number: '4.9/5', label: 'Average Rating' },
           ].map((stat, index) => (
-            <div key={stat.label} className="space-y-2">
-              <div className="text-2xl lg:text-3xl font-bold text-white">
+            <div key={stat.label} className="space-y-1 sm:space-y-2">
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">
                 {stat.number}
               </div>
-              <div className="text-purple-200 text-sm">
+              <div className="text-purple-200 text-xs sm:text-sm">
                 {stat.label}
               </div>
             </div>

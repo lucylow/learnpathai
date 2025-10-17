@@ -42,7 +42,7 @@ interface StudyRoomProps {
   learningPath?: {
     currentConcept?: string;
     currentConcepts?: string[];
-    [key: string]: any;
+    [key: string]: string | string[] | number | boolean | undefined;
   };
   onExit?: () => void;
 }

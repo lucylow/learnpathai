@@ -23,23 +23,23 @@ export default function LearningPath() {
     <Layout>
 
       <div className="border-b border-border bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-6 py-12 max-w-4xl">
-          <h1 className="text-4xl font-bold text-foreground mb-3">Adaptive Learning Path</h1>
-          <p className="text-xl text-muted-foreground">Your personalized learning journey, powered by AI</p>
+        <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 max-w-4xl">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-2 sm:mb-3">Adaptive Learning Path</h1>
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground">Your personalized learning journey, powered by AI</p>
         </div>
       </div>
 
-      <div className="container mx-auto px-6 py-8 max-w-4xl">
-        <Card className="mb-6 border-primary/20 bg-primary/5">
+      <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8 max-w-4xl">
+        <Card className="mb-4 sm:mb-6 border-primary/20 bg-primary/5">
           <CardHeader>
             <div className="flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-primary" />
-              <CardTitle>Interactive Demo</CardTitle>
+              <Sparkles className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+              <CardTitle className="text-base sm:text-lg">Interactive Demo</CardTitle>
             </div>
-            <CardDescription>Simulate quiz attempts to see how the learning path adapts in real-time</CardDescription>
+            <CardDescription className="text-sm">Simulate quiz attempts to see how the learning path adapts in real-time</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-2">
               <Button onClick={() => simulateQuizFailure("loops")} variant="outline" size="sm">
                 Fail "Loops" Quiz
               </Button>
@@ -60,7 +60,7 @@ export default function LearningPath() {
               </Button>
             </div>
             {attempts.length > 0 && (
-              <div className="mt-3 text-sm text-muted-foreground">
+              <div className="mt-3 text-xs sm:text-sm text-muted-foreground">
                 Recent attempts: {attempts.map(a => a.concept).join(", ")}
               </div>
             )}
@@ -68,19 +68,19 @@ export default function LearningPath() {
         </Card>
 
         {data && (
-          <Card className="mb-6">
+          <Card className="mb-4 sm:mb-6">
             <CardHeader>
-              <CardTitle>Overall Progress</CardTitle>
+              <CardTitle className="text-base sm:text-lg">Overall Progress</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <div className="text-3xl font-bold text-primary">
+                  <div className="text-2xl sm:text-3xl font-bold text-primary">
                     {Math.round(data.mastery * 100)}%
                   </div>
-                  <div className="text-sm text-muted-foreground">Average Mastery</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">Average Mastery</div>
                 </div>
-                <Badge variant="secondary" className="text-lg px-4 py-2">
+                <Badge variant="secondary" className="text-sm sm:text-base lg:text-lg px-3 sm:px-4 py-1.5 sm:py-2">
                   {data.path.length} Concepts
                 </Badge>
               </div>
@@ -89,26 +89,26 @@ export default function LearningPath() {
         )}
 
         {isLoading && (
-          <div className="flex items-center justify-center py-12">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          <div className="flex items-center justify-center py-8 sm:py-12">
+            <Loader2 className="h-6 w-6 sm:h-8 sm:w-8 animate-spin text-primary" />
           </div>
         )}
 
         {data && (
-          <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Your Learning Path</h2>
+          <div className="space-y-3 sm:space-y-4">
+            <h2 className="text-lg sm:text-xl font-semibold">Your Learning Path</h2>
             {data.path.map((step, index) => (
               <Card key={step.concept}>
                 <CardHeader>
-                  <div className="flex items-start gap-3">
-                    <Badge variant="outline">{index + 1}</Badge>
-                    <div className="flex-1">
-                      <CardTitle className="text-lg">{step.concept}</CardTitle>
-                      <div className="mt-2 text-sm text-muted-foreground">
+                  <div className="flex items-start gap-2 sm:gap-3">
+                    <Badge variant="outline" className="text-xs sm:text-sm">{index + 1}</Badge>
+                    <div className="flex-1 min-w-0">
+                      <CardTitle className="text-base sm:text-lg">{step.concept}</CardTitle>
+                      <div className="mt-1 sm:mt-2 text-xs sm:text-sm text-muted-foreground">
                         Mastery: {Math.round(step.mastery * 100)}%
                       </div>
                       {step.reasoning && (
-                        <p className="mt-2 text-sm text-muted-foreground">{step.reasoning}</p>
+                        <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-muted-foreground">{step.reasoning}</p>
                       )}
                     </div>
                   </div>
@@ -116,9 +116,9 @@ export default function LearningPath() {
                 <CardContent>
                   <div className="space-y-2">
                     {step.resources.map((resource) => (
-                      <div key={resource.id} className="p-3 border rounded-lg">
-                        <div className="font-medium">{resource.title}</div>
-                        <div className="text-sm text-muted-foreground">
+                      <div key={resource.id} className="p-2 sm:p-3 border rounded-lg">
+                        <div className="font-medium text-sm sm:text-base">{resource.title}</div>
+                        <div className="text-xs sm:text-sm text-muted-foreground">
                           {resource.type} • {resource.duration} min
                         </div>
                       </div>

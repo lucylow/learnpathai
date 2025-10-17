@@ -37,7 +37,7 @@ async function initializeKnowledgeGraph() {
     const kgData = JSON.parse(fs.readFileSync(kgPath, 'utf8'));
 
     // Convert to ConceptNode format
-    allNodes = Object.entries(kgData).map(([id, data]: [string, any]) => ({
+    allNodes = Object.entries(kgData as Record<string, import('../generator/types').RawConceptData>).map(([id, data]) => ({
       id,
       title: data.title || id,
       prerequisites: data.prereqs || data.prerequisites || [],
@@ -140,12 +140,12 @@ router.post('/generate', async (req: Request, res: Response) => {
       generationTimeMs: generationTime,
       graphStats: getGraphStats(),
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error generating learning path:', error);
     res.status(500).json({
       success: false,
       error: 'Path generation failed',
-      detail: error.message,
+      detail: error instanceof Error ? error.message : 'Unknown error',
     });
   }
 });
@@ -180,12 +180,12 @@ router.post('/replan', async (req: Request, res: Response) => {
       path,
       message: 'Path replanned based on updated mastery',
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error replanning path:', error);
     res.status(500).json({
       success: false,
       error: 'Path replanning failed',
-      detail: error.message,
+      detail: error instanceof Error ? error.message : 'Unknown error',
     });
   }
 });
@@ -215,12 +215,12 @@ router.post('/next-recommendations', async (req: Request, res: Response) => {
       explanation,
       motivationalMessage,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error getting recommendations:', error);
     res.status(500).json({
       success: false,
       error: 'Failed to get recommendations',
-      detail: error.message,
+      detail: error instanceof Error ? error.message : 'Unknown error',
     });
   }
 });
@@ -248,12 +248,12 @@ router.get('/concept/:conceptId', (req: Request, res: Response) => {
       concept: node,
       resources,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error getting concept:', error);
     res.status(500).json({
       success: false,
       error: 'Failed to get concept',
-      detail: error.message,
+      detail: error instanceof Error ? error.message : 'Unknown error',
     });
   }
 });
@@ -281,12 +281,12 @@ router.post('/progress', (req: Request, res: Response) => {
       progressSummary,
       motivationalMessage,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error getting progress:', error);
     res.status(500).json({
       success: false,
       error: 'Failed to get progress',
-      detail: error.message,
+      detail: error instanceof Error ? error.message : 'Unknown error',
     });
   }
 });
@@ -317,12 +317,12 @@ router.post('/reload-graph', async (req: Request, res: Response) => {
       message: 'Knowledge graph reloaded',
       graphStats: getGraphStats(),
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error reloading graph:', error);
     res.status(500).json({
       success: false,
       error: 'Failed to reload graph',
-      detail: error.message,
+      detail: error instanceof Error ? error.message : 'Unknown error',
     });
   }
 });

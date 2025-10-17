@@ -37,7 +37,7 @@ const BadgeCollection: React.FC<BadgeCollectionProps> = ({ userId }) => {
 
       if (availableData.success) {
         const allBadges = availableData.badges.map((badge: Badge) => {
-          const earned = earnedData.badges?.find((b: any) => b.id === badge.id || b.badgeId === badge.id);
+          const earned = earnedData.badges?.find((b: {id?: string; badgeId?: string; earnedAt?: string}) => b.id === badge.id || b.badgeId === badge.id);
           return {
             ...badge,
             earned: !!earned,

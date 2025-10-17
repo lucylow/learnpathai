@@ -110,7 +110,7 @@ export const QuizGenerator: React.FC<QuizGeneratorProps> = ({
 
             <div className="space-y-2">
               <Label>Difficulty</Label>
-              <RadioGroup value={difficulty} onValueChange={(v) => setDifficulty(v as any)}>
+              <RadioGroup value={difficulty} onValueChange={(v) => setDifficulty(v as 'easy' | 'medium' | 'hard')}>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="easy" id="easy" />
                   <Label htmlFor="easy">Easy</Label>

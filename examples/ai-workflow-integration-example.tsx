@@ -8,11 +8,17 @@ import { aiService } from '@/services/core/AIService';
 import { adaptationEngine } from '@/services/core/AdaptationEngine';
 import type { LearningEvent, AdaptiveResponse } from '@/types/ai-workflow.types';
 
+interface KnowledgeState {
+  conceptMastery: Record<string, number>;
+  totalAttempts?: number;
+  [key: string]: number | Record<string, number> | undefined;
+}
+
 export const AIWorkflowExample: React.FC = () => {
   const [userId] = useState('demo_user_001');
   const [currentConcept, setCurrentConcept] = useState('loops');
   const [response, setResponse] = useState<AdaptiveResponse | null>(null);
-  const [knowledgeState, setKnowledgeState] = useState<any>(null);
+  const [knowledgeState, setKnowledgeState] = useState<KnowledgeState | null>(null);
   const [loading, setLoading] = useState(false);
   const [processingTime, setProcessingTime] = useState(0);
 
@@ -146,7 +152,7 @@ export const AIWorkflowExample: React.FC = () => {
             <div className="mt-4">
               <div className="text-sm text-gray-600 mb-2">Concept Mastery:</div>
               <div className="space-y-2">
-                {Object.entries(knowledgeState.conceptMastery).map(([concept, mastery]: [string, any]) => (
+                {Object.entries(knowledgeState.conceptMastery).map(([concept, mastery]: [string, number]) => (
                   <div key={concept} className="flex items-center">
                     <span className="w-32 text-sm">{concept}</span>
                     <div className="flex-1 bg-gray-200 rounded-full h-4">

@@ -8,7 +8,7 @@ export interface UserProfile {
   avatarUrl?: string;
   joinCohort?: string;
   department?: string;
-  [key: string]: any;
+  [key: string]: string | undefined;
 }
 
 export interface User {
