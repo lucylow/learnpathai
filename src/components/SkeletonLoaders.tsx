@@ -13,7 +13,7 @@ const shimmer = {
 };
 
 const skeletonClass =
-  'bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700';
+  'bg-gradient-to-r from-muted via-muted/60 to-muted animate-shimmer';
 
 // Dashboard Skeleton
 export const DashboardSkeleton = () => (
@@ -99,15 +99,15 @@ export const CourseCardSkeleton = () => (
 
 // Knowledge Graph Skeleton
 export const GraphSkeleton = () => (
-  <div className="relative w-full h-[600px] bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl overflow-hidden">
+  <div className="relative w-full h-[600px] bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl border border-border overflow-hidden">
     <div className="absolute inset-0 flex items-center justify-center">
       <div className="space-y-4 text-center">
         <motion.div
-          className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full mx-auto"
+          className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full mx-auto"
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
         />
-        <p className="text-gray-600 dark:text-gray-400">Loading knowledge graph...</p>
+        <p className="text-sm text-muted-foreground">Loading knowledge graph...</p>
       </div>
     </div>
 
@@ -115,7 +115,7 @@ export const GraphSkeleton = () => (
     {[1, 2, 3, 4, 5].map((i) => (
       <motion.div
         key={i}
-        className={`absolute w-20 h-20 ${skeletonClass} rounded-full`}
+        className={`absolute w-20 h-20 ${skeletonClass} rounded-full opacity-30`}
         style={{
           top: `${Math.random() * 80 + 10}%`,
           left: `${Math.random() * 80 + 10}%`,
@@ -195,7 +195,7 @@ export const ButtonSkeleton = ({ width = 'w-32' }) => (
 
 // Card Skeleton
 export const CardSkeleton = () => (
-  <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg space-y-4">
+  <div className="bg-background rounded-xl p-6 shadow-sm border border-border space-y-4">
     {/* Header */}
     <div className="flex items-center gap-4">
       <AvatarSkeleton size="lg" />
@@ -227,21 +227,21 @@ export const CardSkeleton = () => (
 // Loading Spinner (for fallback)
 export const LoadingSpinner = ({ size = 'md', label = 'Loading...' }) => {
   const sizeClasses = {
-    sm: 'w-4 h-4',
-    md: 'w-8 h-8',
-    lg: 'w-12 h-12',
-    xl: 'w-16 h-16',
+    sm: 'w-4 h-4 border-2',
+    md: 'w-8 h-8 border-3',
+    lg: 'w-12 h-12 border-4',
+    xl: 'w-16 h-16 border-4',
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4 p-8">
+    <div className="flex flex-col items-center justify-center gap-3 p-8">
       <motion.div
-        className={`${sizeClasses[size]} border-4 border-blue-500 border-t-transparent rounded-full`}
+        className={`${sizeClasses[size]} border-primary border-t-transparent rounded-full`}
         animate={{ rotate: 360 }}
         transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
       />
       {label && (
-        <p className="text-sm text-gray-600 dark:text-gray-400">{label}</p>
+        <p className="text-sm text-muted-foreground font-medium">{label}</p>
       )}
     </div>
   );

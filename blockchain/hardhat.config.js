@@ -1,49 +1,57 @@
-require("@nomiclabs/hardhat-waffle");
-require("@nomiclabs/hardhat-etherscan");
-require("hardhat-gas-reporter");
-require("solidity-coverage");
+require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 
-const { PRIVATE_KEY, ALCHEMY_API_KEY, POLYGONSCAN_API_KEY } = process.env;
-
+/** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: {
     version: "0.8.17",
     settings: {
       optimizer: {
         enabled: true,
-        runs: 200
-      }
-    }
+        runs: 200,
+      },
+    },
   },
   networks: {
+    // Local Hardhat network
     hardhat: {
-      chainId: 1337
+      chainId: 1337,
     },
+    
+    // Polygon Mumbai Testnet
     mumbai: {
-      url: `https://polygon-mumbai.g.alchemy.com/v2/${ALCHEMY_API_KEY || 'demo'}`,
-      accounts: PRIVATE_KEY ? [PRIVATE_KEY] : []
+      url: process.env.MUMBAI_RPC_URL || "https://rpc-mumbai.maticvigil.com",
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+      chainId: 80001,
+      gasPrice: 20000000000, // 20 gwei
     },
+    
+    // Polygon Mainnet
     polygon: {
-      url: `https://polygon-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY || 'demo'}`,
-      accounts: PRIVATE_KEY ? [PRIVATE_KEY] : []
+      url: process.env.POLYGON_RPC_URL || "https://polygon-rpc.com",
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+      chainId: 137,
+      gasPrice: 50000000000, // 50 gwei
     },
-    localhost: {
-      url: "http://127.0.0.1:8545"
-    }
+    
+    // Ethereum Goerli Testnet
+    goerli: {
+      url: process.env.GOERLI_RPC_URL || "https://goerli.infura.io/v3/YOUR_INFURA_KEY",
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+      chainId: 5,
+    },
   },
   etherscan: {
-    apiKey: POLYGONSCAN_API_KEY
-  },
-  gasReporter: {
-    enabled: process.env.REPORT_GAS === "true",
-    currency: "USD"
+    apiKey: {
+      polygon: process.env.POLYGONSCAN_API_KEY || "",
+      polygonMumbai: process.env.POLYGONSCAN_API_KEY || "",
+      goerli: process.env.ETHERSCAN_API_KEY || "",
+    },
   },
   paths: {
     sources: "./contracts",
     tests: "./test",
     cache: "./cache",
-    artifacts: "./artifacts"
-  }
+    artifacts: "./artifacts",
+  },
 };
-

@@ -23,24 +23,26 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <main className="mx-auto max-w-7xl px-6 py-12">
-        <div className="mb-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-4xl font-bold text-foreground mb-2">Welcome back!</h1>
-              <p className="text-muted-foreground text-lg">Continue your learning journey</p>
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+        {/* Header Section */}
+        <div className="mb-8 lg:mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="space-y-1">
+              <h1 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight">Welcome back!</h1>
+              <p className="text-muted-foreground text-base sm:text-lg">Continue your learning journey</p>
             </div>
-            <Link to="/learning-path-viewer">
-              <Button variant="outline" size="lg">
+            <Link to="/learning-path-viewer" className="sm:shrink-0">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto">
                 <Zap className="h-4 w-4 mr-2" />
-                View Knowledge Graph
+                <span className="hidden sm:inline">View Knowledge Graph</span>
+                <span className="sm:hidden">Knowledge Graph</span>
               </Button>
             </Link>
           </div>
         </div>
 
         {/* XP Tracker */}
-        <div className="mb-12">
+        <div className="mb-8 lg:mb-12">
           <XPTracker
             currentXP={mockUserProgress.currentXP}
             level={mockUserProgress.level}
@@ -50,57 +52,63 @@ const Dashboard = () => {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-12">
-          <Card>
+        <div className="grid gap-4 sm:gap-6 grid-cols-2 lg:grid-cols-4 mb-8 lg:mb-12">
+          <Card className="hover:shadow-md transition-shadow">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Active Courses</CardTitle>
-              <BookOpen className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-xs sm:text-sm font-medium">Active Courses</CardTitle>
+              <BookOpen className="h-4 w-4 text-muted-foreground shrink-0" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{mockUserStats.activeCourses}</div>
-              <p className="text-xs text-muted-foreground">{mockUserStats.completedCourses} completed this month</p>
+              <div className="text-xl sm:text-2xl font-bold">{mockUserStats.activeCourses}</div>
+              <p className="text-xs text-muted-foreground mt-1">{mockUserStats.completedCourses} completed</p>
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="hover:shadow-md transition-shadow">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Learning Streak</CardTitle>
-              <Target className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-xs sm:text-sm font-medium">Learning Streak</CardTitle>
+              <Target className="h-4 w-4 text-muted-foreground shrink-0" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{mockUserStats.learningStreak} days</div>
-              <p className="text-xs text-muted-foreground">Keep it up!</p>
+              <div className="text-xl sm:text-2xl font-bold flex items-baseline gap-1">
+                {mockUserStats.learningStreak}
+                <span className="text-sm font-normal text-muted-foreground">days</span>
+              </div>
+              <p className="text-xs text-muted-foreground mt-1">Keep it up!</p>
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="hover:shadow-md transition-shadow">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Progress</CardTitle>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-xs sm:text-sm font-medium">Progress</CardTitle>
+              <TrendingUp className="h-4 w-4 text-muted-foreground shrink-0" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{mockUserStats.averageProgress}%</div>
-              <p className="text-xs text-muted-foreground">Avg score: {mockUserStats.averageScore}%</p>
+              <div className="text-xl sm:text-2xl font-bold">{mockUserStats.averageProgress}%</div>
+              <p className="text-xs text-muted-foreground mt-1">Avg: {mockUserStats.averageScore}%</p>
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="hover:shadow-md transition-shadow">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Study Time</CardTitle>
-              <Clock className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-xs sm:text-sm font-medium">Study Time</CardTitle>
+              <Clock className="h-4 w-4 text-muted-foreground shrink-0" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{mockUserStats.totalStudyTime}h</div>
-              <p className="text-xs text-muted-foreground">This month</p>
+              <div className="text-xl sm:text-2xl font-bold flex items-baseline gap-1">
+                {mockUserStats.totalStudyTime}
+                <span className="text-sm font-normal text-muted-foreground">hrs</span>
+              </div>
+              <p className="text-xs text-muted-foreground mt-1">This month</p>
             </CardContent>
           </Card>
         </div>
 
         {/* Recent Achievements */}
         {recentAchievements.length > 0 && (
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-foreground mb-4">Recent Achievements</h2>
-            <div className="grid gap-4 md:grid-cols-3">
+          <div className="mb-8 lg:mb-12">
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4">Recent Achievements</h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {recentAchievements.map((achievement) => (
                 <Card key={achievement.id} className="hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
@@ -122,11 +130,11 @@ const Dashboard = () => {
         )}
 
         {/* Current Learning Paths */}
-        <div className="space-y-6 mb-12">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-foreground">Your Learning Paths</h2>
+        <div className="space-y-6 mb-8 lg:mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground">Your Learning Paths</h2>
             <Link to="/learning-path">
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="w-full sm:w-auto">
                 <Zap className="h-4 w-4 mr-2" />
                 View All Paths
               </Button>
@@ -176,7 +184,7 @@ const Dashboard = () => {
 
          {/* Activity & AI Tutor Tabs */}
          <div className="space-y-6">
-           <h2 className="text-2xl font-bold text-foreground">Activity & Assistance</h2>
+           <h2 className="text-xl sm:text-2xl font-bold text-foreground">Activity & Assistance</h2>
            <Tabs defaultValue="activity" className="w-full">
              <TabsList className="grid w-full grid-cols-2">
                <TabsTrigger value="activity">Recent Activity</TabsTrigger>

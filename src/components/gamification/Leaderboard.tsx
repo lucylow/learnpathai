@@ -44,10 +44,10 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ userId, cohort }) => {
   };
 
   const getRankColor = (rank: number) => {
-    if (rank === 1) return 'from-yellow-400 to-yellow-600 text-white';
-    if (rank === 2) return 'from-gray-400 to-gray-600 text-white';
-    if (rank === 3) return 'from-orange-400 to-orange-600 text-white';
-    return 'bg-white text-gray-900';
+    if (rank === 1) return 'bg-gradient-to-br from-yellow-400 to-amber-500 text-white border-yellow-400';
+    if (rank === 2) return 'bg-gradient-to-br from-slate-300 to-slate-400 text-slate-900 border-slate-400';
+    if (rank === 3) return 'bg-gradient-to-br from-orange-400 to-orange-500 text-white border-orange-400';
+    return 'bg-muted text-muted-foreground border-border';
   };
 
   const getRankIcon = (rank: number) => {
@@ -84,78 +84,71 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ userId, cohort }) => {
   }
 
   return (
-    <div className="bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 rounded-3xl shadow-2xl border-8 border-purple-400 p-8 relative overflow-hidden">
-      {/* Fun background elements */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+    <div 
+      className="bg-gradient-to-br from-primary/5 via-accent/5 to-background rounded-xl shadow-lg border border-border p-6 relative overflow-hidden"
+      role="region"
+      aria-label="Leaderboard"
+    >
+      {/* Subtle background elements */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        {[...Array(8)].map((_, i) => (
           <motion.div
             key={i}
             animate={{
-              y: [0, -30, 0],
-              x: [0, Math.sin(i) * 20, 0],
-              rotate: [0, 360]
+              y: [0, -20, 0],
             }}
             transition={{
-              duration: 3 + i * 0.3,
+              duration: 4 + i * 0.5,
               repeat: Infinity,
-              delay: i * 0.1
+              delay: i * 0.3
             }}
-            className="absolute"
+            className="absolute text-2xl"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              fontSize: `${Math.random() * 25 + 15}px`
+              left: `${10 + (i * 12)}%`,
+              top: `${20 + Math.sin(i) * 30}%`,
             }}
           >
-            {['🏆', '⭐', '🎯', '🔥', '💪'][Math.floor(Math.random() * 5)]}
+            {['🏆', '⭐', '🎯'][i % 3]}
           </motion.div>
         ))}
       </div>
 
       {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-center mb-6 relative z-10">
-        <motion.h2 
-          animate={{ 
-            scale: [1, 1.1, 1],
-            rotate: [0, 2, -2, 0]
-          }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 mb-4 md:mb-0"
-        >
-          🏆 Champion Leaderboard! 🏆
-        </motion.h2>
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 relative z-10 gap-4">
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-1 flex items-center gap-2">
+            <span className="text-3xl">🏆</span>
+            Leaderboard
+          </h2>
+          <p className="text-sm text-muted-foreground">Top performers this week</p>
+        </div>
         
-        {/* Type Selector - More Fun! */}
-        <div className="flex gap-3 bg-white rounded-2xl p-2 shadow-lg border-4 border-purple-300">
+        {/* Type Selector */}
+        <div className="flex gap-2 bg-muted/50 rounded-lg p-1 border border-border">
           {[
             { id: 'xp' as const, label: 'XP', icon: '⭐' },
             { id: 'streak' as const, label: 'Streak', icon: '🔥' }
           ].map((tab) => (
-            <motion.button
+            <button
               key={tab.id}
               onClick={() => setType(tab.id)}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-base font-black transition-all ${
+              aria-pressed={type === tab.id}
+              aria-label={`Sort by ${tab.label}`}
+              className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
                 type === tab.id
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
-                  : 'text-gray-600 hover:bg-purple-100'
+                  ? 'bg-primary text-primary-foreground shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-background'
               }`}
             >
-              <motion.span
-                animate={type === tab.id ? { rotate: [0, 360] } : {}}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                {tab.icon}
-              </motion.span>
+              <span className="text-base" aria-hidden="true">{tab.icon}</span>
               {tab.label}
-            </motion.button>
+            </button>
           ))}
         </div>
       </div>
 
-      {/* Leaderboard List - Super Fun! */}
-      <div className="space-y-4 relative z-10">
+      {/* Leaderboard List */}
+      <div className="space-y-3 relative z-10" role="list" aria-label="Top learners">
         {leaderboard.map((user, index) => {
           const rank = index + 1;
           const isCurrentUser = user.userId === userId;
@@ -163,104 +156,92 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ userId, cohort }) => {
           return (
             <motion.div
               key={user.userId}
-              initial={{ opacity: 0, x: -50, scale: 0.8 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
+              role="listitem"
+              aria-label={`Rank ${rank}: Learner ${user.userId.slice(-4)}, ${getDisplayValue(user, type)}, ${user.streak} day streak`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ 
-                delay: index * 0.1,
+                delay: index * 0.05,
                 type: "spring",
-                stiffness: 200,
-                damping: 20
+                stiffness: 300,
+                damping: 30
               }}
-              whileHover={{ 
-                scale: 1.03,
-                rotate: rank <= 3 ? [0, -1, 1, 0] : 0
-              }}
-              className={`flex items-center gap-4 p-5 rounded-2xl border-4 relative overflow-hidden ${
+              className={`flex items-center gap-4 p-4 rounded-lg border relative overflow-hidden transition-all hover:shadow-md ${
                 isCurrentUser 
-                  ? 'border-blue-500 bg-blue-100 shadow-xl' 
-                  : 'border-white'
+                  ? 'border-primary bg-primary/5 shadow-sm' 
+                  : 'border-border bg-background'
               } ${
-                rank <= 3 ? `bg-gradient-to-r ${getRankColor(rank)} shadow-2xl` : 'bg-white'
+                rank <= 3 ? `border-2 ${getRankColor(rank)}` : ''
               }`}
             >
-              {/* Sparkle effect for top 3 */}
+              {/* Subtle gradient for top 3 */}
               {rank <= 3 && (
-                <motion.div
-                  animate={{
-                    backgroundPosition: ['0% 0%', '100% 100%']
+                <div
+                  className="absolute inset-0 opacity-5 pointer-events-none"
+                  style={{
+                    background: rank === 1 ? 'linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)' :
+                               rank === 2 ? 'linear-gradient(135deg, #c0c0c0 0%, #e5e5e5 100%)' :
+                               'linear-gradient(135deg, #cd7f32 0%, #e5a372 100%)'
                   }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20"
-                  style={{ backgroundSize: '200% 200%' }}
                 />
               )}
               
-              {/* Rank - Super Big! */}
-              <motion.div 
-                animate={rank <= 3 ? {
-                  scale: [1, 1.2, 1],
-                  rotate: [0, 10, -10, 0]
-                } : {}}
-                transition={{ duration: 2, repeat: Infinity }}
-                className={`w-14 h-14 rounded-full flex items-center justify-center font-black text-2xl shadow-lg ${
-                  rank <= 3 ? 'bg-white text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500' : 'bg-purple-100 text-purple-600'
+              {/* Rank Badge */}
+              <div 
+                className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shrink-0 ${
+                  rank <= 3 ? getRankColor(rank) + ' shadow-sm' : 'bg-muted text-muted-foreground'
                 }`}
               >
                 {getRankIcon(rank)}
-              </motion.div>
+              </div>
 
-              {/* User Info - Fun Style! */}
+              {/* User Info */}
               <div className="flex-1 min-w-0 relative z-10">
                 <div className="flex items-center gap-2 mb-1 flex-wrap">
-                  <h3 className={`font-black text-lg truncate ${
-                    rank <= 3 ? 'text-white' : 'text-gray-900'
+                  <h3 className={`font-semibold text-base truncate ${
+                    isCurrentUser ? 'text-primary' : 'text-foreground'
                   }`}>
                     {isCurrentUser && '⭐ '}
-                    Super Learner #{user.userId.slice(-4)}
-                    {isCurrentUser && ' (That\'s You!)'}
+                    Learner #{user.userId.slice(-4)}
+                    {isCurrentUser && ' (You)'}
                   </h3>
-                  <motion.span 
-                    animate={{ scale: [1, 1.1, 1] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                    className={`text-sm px-3 py-1 rounded-full font-black ${
+                  <span className={`text-xs px-2 py-0.5 rounded-full font-medium border ${
                       rank <= 3 
-                        ? 'bg-white text-purple-600'
-                        : 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
-                    } shadow-md`}
-                  >
-                    🚀 Level {user.level}
-                  </motion.span>
+                      ? 'bg-primary/10 text-primary border-primary/20'
+                      : 'bg-muted text-muted-foreground border-border'
+                  }`}>
+                    Level {user.level}
+                  </span>
                 </div>
-                <div className={`text-base font-bold ${
-                  rank <= 3 ? 'text-white' : 'text-gray-700'
-                }`}>
+                <div className="text-sm font-medium text-muted-foreground">
                   {getDisplayValue(user, type)}
-                  {type === 'xp' && ` • ${user.badges} badges collected!`}
+                  {type === 'xp' && user.badges > 0 && ` • ${user.badges} badges`}
                 </div>
               </div>
 
-              {/* Additional Stats - Big and Fun! */}
-              <div className={`text-right text-base font-black ${
-                rank <= 3 ? 'text-white' : 'text-gray-700'
-              } relative z-10`}>
-                <motion.div 
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                >
-                  🔥 {user.streak} days
-                </motion.div>
-                <div className="mt-1">🏆 {user.badges} badges</div>
+              {/* Additional Stats */}
+              <div className="text-right text-sm font-medium text-muted-foreground shrink-0">
+                <div className="flex items-center gap-1 justify-end">
+                  <span>🔥</span>
+                  <span>{user.streak} day{user.streak !== 1 ? 's' : ''}</span>
+                </div>
+                {user.badges > 0 && (
+                  <div className="mt-0.5 flex items-center gap-1 justify-end">
+                    <span>🏆</span>
+                    <span>{user.badges}</span>
+                  </div>
+                )}
               </div>
               
-              {/* Crown for #1! */}
+              {/* Crown for #1 */}
               {rank === 1 && (
                 <motion.div
                   animate={{
-                    y: [-5, 5, -5],
-                    rotate: [0, 10, -10, 0]
+                    y: [-3, 3, -3],
                   }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-4xl z-20"
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-4 left-1/2 transform -translate-x-1/2 text-3xl z-20"
+                  style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' }}
                 >
                   👑
                 </motion.div>
@@ -272,26 +253,37 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ userId, cohort }) => {
 
       {/* Empty State */}
       {leaderboard.length === 0 && (
-        <div className="text-center py-8 text-gray-500">
-          <div className="text-4xl mb-2">🏆</div>
-          <p>No leaderboard data yet</p>
-          <p className="text-sm">Complete some activities to appear here!</p>
-        </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center py-16 bg-muted/30 rounded-lg border-2 border-dashed border-border relative z-10"
+        >
+          <div className="text-5xl mb-4">🏆</div>
+          <h3 className="text-xl font-semibold text-foreground mb-2">
+            No rankings yet
+          </h3>
+          <p className="text-sm text-muted-foreground max-w-sm mx-auto">
+            Complete challenges and earn XP to appear on the leaderboard!
+          </p>
+        </motion.div>
       )}
 
       {/* Privacy Notice */}
-      <div className="mt-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
-        <p className="text-xs text-gray-600 text-center">
-          🔒 Leaderboard shows anonymized IDs for privacy. Your data is secure.
+      <div className="mt-6 p-3 bg-muted/50 rounded-lg border border-border relative z-10">
+        <p className="text-xs text-muted-foreground text-center flex items-center justify-center gap-2">
+          <span>🔒</span>
+          <span>Your privacy is protected. Only anonymized data is shown.</span>
         </p>
       </div>
 
       {/* Refresh Button */}
       <button
         onClick={fetchLeaderboard}
-        className="mt-4 w-full py-2 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+        aria-label="Refresh leaderboard rankings"
+        className="mt-4 w-full py-3 text-sm font-medium bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all shadow-sm relative z-10 flex items-center justify-center gap-2"
       >
-        🔄 Refresh Leaderboard
+        <span aria-hidden="true">🔄</span>
+        <span>Refresh Rankings</span>
       </button>
     </div>
   );

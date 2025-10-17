@@ -81,10 +81,44 @@ export default {
             height: "0",
           },
         },
+        shimmer: {
+          "0%": {
+            backgroundPosition: "200% 0",
+          },
+          "100%": {
+            backgroundPosition: "-200% 0",
+          },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        gradient: {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
+        typewriter: {
+          from: { width: "0" },
+          to: { width: "100%" },
+        },
+        fadeInUp: {
+          from: { opacity: "0", transform: "translateY(30px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        pulseGlow: {
+          "0%, 100%": { boxShadow: "0 0 20px rgba(99, 102, 241, 0.4)" },
+          "50%": { boxShadow: "0 0 40px rgba(99, 102, 241, 0.8)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        shimmer: "shimmer 2s linear infinite",
+        float: "float 6s ease-in-out infinite",
+        gradient: "gradient 15s ease infinite",
+        typewriter: "typewriter 4s steps(40) 1s both",
+        "fade-in-up": "fadeInUp 0.8s ease-out",
+        "pulse-glow": "pulseGlow 2s ease-in-out infinite",
       },
     },
   },

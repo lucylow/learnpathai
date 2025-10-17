@@ -21,6 +21,21 @@ const mockExternalRoute = require("./routes/mock-external");
 const challengesRoute = require("./routes/challenges");
 const gamifyRoute = require("./routes/gamify");
 const blockchainRoute = require("./routes/blockchain");
+// New API integration routes
+const aiRoute = require("./routes/ai");
+const transcribeRoute = require("./routes/transcribe");
+const ttsRoute = require("./routes/tts");
+const ipfsRoute = require("./routes/ipfs");
+const emailRoute = require("./routes/email");
+
+// Advanced pathway generator (TypeScript)
+let learningPathRoute = null;
+try {
+  require("ts-node/register");
+  learningPathRoute = require("./api/learningPath").default;
+} catch (err) {
+  logger.warn("⚠️ Advanced pathway generator not available (ts-node required)");
+}
 
 // Socket.IO collaboration server
 const CollaborationServer = require("./sockets/collaboration");
@@ -37,6 +52,9 @@ async function main() {
   app.use(express.json());
   app.use(morgan("tiny"));
   app.use((req, res, next) => { req.db = db; next(); });
+  
+  // Serve static files (for TTS audio files)
+  app.use(express.static("public"));
 
   app.use("/api/paths", pathsRoute);
   app.use("/api/events", eventsRoute);
@@ -49,6 +67,19 @@ async function main() {
   app.use("/api/challenges", challengesRoute);
   app.use("/api/gamify", gamifyRoute);
   app.use("/api/blockchain", blockchainRoute);
+  
+  // New API integration routes
+  app.use("/api/ai", aiRoute);
+  app.use("/api/transcribe", transcribeRoute);
+  app.use("/api/tts", ttsRoute);
+  app.use("/api/ipfs", ipfsRoute);
+  app.use("/api/email", emailRoute);
+  
+  // Advanced pathway generator
+  if (learningPathRoute) {
+    app.use("/api/learning-path", learningPathRoute);
+    logger.info("✅ Advanced pathway generator enabled at /api/learning-path");
+  }
 
   // health check root
   app.get("/", (req, res) => res.json({ 
@@ -63,7 +94,12 @@ async function main() {
       "explainable-recommendations",
       "micro-challenges",
       "gamification",
-      "blockchain-certificates"
+      "blockchain-certificates",
+      "openai-llms",
+      "speech-transcription",
+      "text-to-speech",
+      "ipfs-storage",
+      "transactional-email"
     ],
     ts: new Date().toISOString() 
   }));
