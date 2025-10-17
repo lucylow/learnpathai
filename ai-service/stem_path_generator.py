@@ -137,7 +137,8 @@ class STEMPathGenerator:
     def _load_knowledge_graph(self, path: str = None) -> Dict[str, Concept]:
         """Load STEM knowledge graph from JSON file"""
         if path is None:
-            path = Path(__file__).parent.parent / "backend" / "data" / "stem_knowledge_graph.json"
+            # Resolve the path to handle .. correctly
+            path = Path(__file__).resolve().parent.parent / "backend" / "data" / "stem_knowledge_graph.json"
         
         # Return empty graph if file doesn't exist (will be created)
         if not Path(path).exists():
@@ -149,10 +150,16 @@ class STEMPathGenerator:
         # Convert JSON to Concept objects
         graph = {}
         for concept_id, concept_data in data.items():
-            resources = [
-                Resource(**r) if isinstance(r, dict) else r 
-                for r in concept_data.get('resources', [])
-            ]
+            resources = []
+            for r in concept_data.get('resources', []):
+                if isinstance(r, dict):
+                    # Handle ResourceType enum conversion
+                    r_copy = r.copy()
+                    if 'type' in r_copy and isinstance(r_copy['type'], str):
+                        r_copy['type'] = ResourceType(r_copy['type'])
+                    resources.append(Resource(**r_copy))
+                else:
+                    resources.append(r)
             graph[concept_id] = Concept(
                 id=concept_id,
                 name=concept_data['name'],
