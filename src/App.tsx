@@ -7,6 +7,9 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LoadingSpinner } from "./components/LoadingSpinner";
 import { queryClient } from "@/lib/queryClient";
+import { AccessibilityProvider } from "./contexts/AccessibilityContext";
+import { AccessibilityToolbar } from "./components/accessibility/AccessibilityToolbar";
+import "./styles/accessibility.css";
 
 // Lazy load pages for better code splitting and performance
 const Index = lazy(() => import("./pages/Index"));
@@ -22,35 +25,41 @@ const Team = lazy(() => import("./pages/Team"));
 const Docs = lazy(() => import("./pages/Docs"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const AccessibilitySettingsPage = lazy(() => import("./pages/AccessibilitySettings"));
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <Suspense fallback={<LoadingSpinner />}>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/age-selection" element={<AgeSelection />} />
-            <Route path="/age-dashboard" element={<AgeDashboard />} />
-            <Route path="/learning-path" element={<LearningPath />} />
-            <Route path="/learning-path-viewer" element={<LearningPathViewer />} />
-            <Route path="/features" element={<Features />} />
-            <Route path="/impact" element={<Impact />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/docs" element={<Docs />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/about" element={<About />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </TooltipProvider>
-    {/* React Query DevTools - only visible in development */}
-    {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
+    <AccessibilityProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+          <Suspense fallback={<LoadingSpinner />}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/age-selection" element={<AgeSelection />} />
+              <Route path="/age-dashboard" element={<AgeDashboard />} />
+              <Route path="/learning-path" element={<LearningPath />} />
+              <Route path="/learning-path-viewer" element={<LearningPathViewer />} />
+              <Route path="/features" element={<Features />} />
+              <Route path="/impact" element={<Impact />} />
+              <Route path="/team" element={<Team />} />
+              <Route path="/docs" element={<Docs />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/accessibility-settings" element={<AccessibilitySettingsPage />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+          {/* Floating Accessibility Toolbar - Available on all pages */}
+          <AccessibilityToolbar />
+        </BrowserRouter>
+      </TooltipProvider>
+      {/* React Query DevTools - only visible in development */}
+      {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
+    </AccessibilityProvider>
   </QueryClientProvider>
 );
 
