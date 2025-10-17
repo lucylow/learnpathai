@@ -13,7 +13,7 @@ export const queryClient = new QueryClient({
       refetchOnMount: false,          // Don't refetch if data is fresh
       
       // Retry configuration with exponential backoff
-      retry: (failureCount, error: any) => {
+      retry: (failureCount, error: Error) => {
         // Don't retry on 4xx errors (client errors)
         if (error?.message?.includes('HTTP 4')) {
           return false;
@@ -30,7 +30,7 @@ export const queryClient = new QueryClient({
       // Mutation defaults
       retry: 1,
       networkMode: 'online' as const,
-      onError: (error: any) => {
+      onError: (error: Error) => {
         console.error('Mutation error:', error);
         track('mutation_error', {
           error: error.message || 'Unknown error',
@@ -42,7 +42,7 @@ export const queryClient = new QueryClient({
   
   // Query cache events for monitoring
   queryCache: new QueryCache({
-    onError: (error: any, query) => {
+    onError: (error: Error, query) => {
       track('query_error', {
         queryKey: JSON.stringify(query.queryKey),
         error: error.message || 'Unknown error',
@@ -69,7 +69,7 @@ export const queryClient = new QueryClient({
   
   // Mutation cache events
   mutationCache: new MutationCache({
-    onError: (error: any, variables, context, mutation) => {
+    onError: (error: Error, variables, context, mutation) => {
       track('mutation_error', {
         mutationKey: mutation.options.mutationKey ? JSON.stringify(mutation.options.mutationKey) : 'unknown',
         error: error.message || 'Unknown error',

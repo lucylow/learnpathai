@@ -11,6 +11,8 @@ import { queryClient } from "@/lib/queryClient";
 // Lazy load pages for better code splitting and performance
 const Index = lazy(() => import("./pages/Index"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
+const AgeDashboard = lazy(() => import("./pages/AgeDashboard"));
+const AgeSelection = lazy(() => import("./pages/AgeSelection"));
 const About = lazy(() => import("./pages/About"));
 const LearningPath = lazy(() => import("./pages/LearningPath"));
 const LearningPathViewer = lazy(() => import("./pages/LearningPathViewer"));
@@ -31,6 +33,8 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/age-selection" element={<AgeSelection />} />
+            <Route path="/age-dashboard" element={<AgeDashboard />} />
             <Route path="/learning-path" element={<LearningPath />} />
             <Route path="/learning-path-viewer" element={<LearningPathViewer />} />
             <Route path="/features" element={<Features />} />
