@@ -28,6 +28,8 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const AccessibilitySettingsPage = lazy(() => import("./pages/AccessibilitySettings"));
 const JudgeDemo = lazy(() => import("./pages/JudgeDemo"));
 const CollaborativeLearning = lazy(() => import("./pages/CollaborativeLearning"));
+const AIFeaturesDemo = lazy(() => import("./pages/AIFeaturesDemo"));
+const EngagingDemo = lazy(() => import("./pages/EngagingDemo"));
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -53,6 +55,8 @@ const App = () => (
               <Route path="/accessibility-settings" element={<AccessibilitySettingsPage />} />
               <Route path="/judge-demo" element={<JudgeDemo />} />
               <Route path="/collaborative-learning" element={<CollaborativeLearning />} />
+              <Route path="/ai-features-demo" element={<AIFeaturesDemo />} />
+              <Route path="/engaging-demo" element={<EngagingDemo />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

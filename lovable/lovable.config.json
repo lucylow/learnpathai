@@ -1,0 +1,111 @@
+{
+  "version": "1.0.0",
+  "name": "learnpath-ai",
+  "functions": {
+    "directory": "functions",
+    "runtime": "nodejs18",
+    "timeout": 30,
+    "memory": 256,
+    "environment": {
+      "AI_SERVICE_URL": "${AI_SERVICE_URL}",
+      "AI_SERVICE_API_KEY": "${AI_SERVICE_API_KEY}"
+    }
+  },
+  "database": {
+    "enabled": true,
+    "tables": [
+      {
+        "name": "learning_paths",
+        "schema": {
+          "id": "uuid",
+          "user_id": "uuid",
+          "subject": "string",
+          "title": "string",
+          "nodes": "jsonb",
+          "overall_mastery": "float",
+          "learning_style": "string",
+          "learning_goal": "text",
+          "estimated_hours": "float",
+          "created_at": "timestamp",
+          "updated_at": "timestamp"
+        },
+        "indexes": ["user_id", "subject", "created_at"]
+      },
+      {
+        "name": "user_progress",
+        "schema": {
+          "id": "uuid",
+          "user_id": "uuid",
+          "path_id": "uuid",
+          "concept_id": "string",
+          "attempts": "jsonb",
+          "mastery_level": "float",
+          "time_spent_minutes": "integer",
+          "last_activity": "timestamp"
+        },
+        "indexes": ["user_id", "path_id", "concept_id"]
+      },
+      {
+        "name": "analytics_events",
+        "schema": {
+          "id": "uuid",
+          "user_id": "uuid",
+          "event_type": "string",
+          "event_data": "jsonb",
+          "timestamp": "timestamp"
+        },
+        "indexes": ["user_id", "event_type", "timestamp"]
+      }
+    ]
+  },
+  "storage": {
+    "enabled": true,
+    "buckets": [
+      {
+        "name": "user-uploads",
+        "public": false,
+        "maxFileSize": "10MB",
+        "allowedTypes": ["image/*", "application/pdf", "text/*"]
+      },
+      {
+        "name": "learning-resources",
+        "public": true,
+        "maxFileSize": "50MB",
+        "allowedTypes": ["image/*", "video/*", "application/pdf"]
+      },
+      {
+        "name": "avatars",
+        "public": true,
+        "maxFileSize": "2MB",
+        "allowedTypes": ["image/*"]
+      },
+      {
+        "name": "certificates",
+        "public": false,
+        "maxFileSize": "5MB",
+        "allowedTypes": ["application/pdf"]
+      }
+    ]
+  },
+  "auth": {
+    "enabled": true,
+    "providers": ["google", "github", "email"],
+    "emailVerification": true,
+    "passwordMinLength": 8
+  },
+  "cors": {
+    "origins": ["http://localhost:5173", "https://*.lovable.app"],
+    "methods": ["GET", "POST", "PUT", "DELETE"],
+    "credentials": true
+  },
+  "monitoring": {
+    "enabled": true,
+    "logLevel": "info",
+    "alerts": {
+      "errorRate": 0.05,
+      "latency": 2000
+    }
+  }
+}
+
+

@@ -10,7 +10,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { Menu, X, Sparkles, GraduationCap, BarChart3, Users, BookOpen, Mail, FileText } from "lucide-react";
+import { Menu, X, Sparkles, GraduationCap, BarChart3, Users, BookOpen, Mail, FileText, Award, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useTranslation } from 'react-i18next';
@@ -42,6 +42,18 @@ const navigationItems = [
         href: "/learning-path-viewer",
         description: "Real-time knowledge tracking demo",
         icon: Sparkles,
+      },
+      {
+        title: "Judge Demo",
+        href: "/judge-demo",
+        description: "🏆 Interactive hackathon showcase",
+        icon: Award,
+      },
+      {
+        title: "Engaging Education",
+        href: "/engaging-demo",
+        description: "🎮 Gamified micro-challenges & rewards",
+        icon: Zap,
       },
       {
         title: "Dashboard",

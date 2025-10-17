@@ -1,0 +1,71 @@
+/* Micro Challenge Animations */
+.micro-challenge-container {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Badge rarity styles */
+.badge-common {
+  @apply bg-gray-100 text-gray-700 border-gray-300;
+}
+
+.badge-rare {
+  @apply bg-blue-100 text-blue-700 border-blue-300;
+}
+
+.badge-epic {
+  @apply bg-purple-100 text-purple-700 border-purple-300;
+}
+
+.badge-legendary {
+  @apply bg-yellow-100 text-yellow-700 border-yellow-300;
+}
+
+/* Smooth transitions for option buttons */
+.option-btn-transition {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Pulse animation for new badges */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.badge-earned {
+  animation: pulse 1s ease-in-out;
+}
+
+/* Progress bar shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.progress-shimmer {
+  background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+

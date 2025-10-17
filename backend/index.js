@@ -17,6 +17,9 @@ const statusRoute = require("./routes/status");
 const roomsRoute = require("./routes/rooms");
 const rankingRoute = require("./routes/ranking");
 const assessmentsRoute = require("./routes/assessments");
+const mockExternalRoute = require("./routes/mock-external");
+const challengesRoute = require("./routes/challenges");
+const gamifyRoute = require("./routes/gamify");
 
 // Socket.IO collaboration server
 const CollaborationServer = require("./sockets/collaboration");
@@ -41,6 +44,9 @@ async function main() {
   app.use("/api/rooms", roomsRoute);
   app.use("/api/ranking", rankingRoute);
   app.use("/api/assessments", assessmentsRoute);
+  app.use("/api/mock-external", mockExternalRoute);
+  app.use("/api/challenges", challengesRoute);
+  app.use("/api/gamify", gamifyRoute);
 
   // health check root
   app.get("/", (req, res) => res.json({ 
@@ -52,7 +58,9 @@ async function main() {
       "collaborative-learning",
       "outcome-aware-ranking",
       "ai-generated-assessments",
-      "explainable-recommendations"
+      "explainable-recommendations",
+      "micro-challenges",
+      "gamification"
     ],
     ts: new Date().toISOString() 
   }));

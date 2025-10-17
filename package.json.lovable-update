@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@lovable/sdk": "^1.0.0",
+    "@lovable/functions": "^1.0.0"
+  },
+  "scripts": {
+    "lovable:dev": "lovable dev",
+    "lovable:deploy": "lovable deploy",
+    "lovable:functions": "lovable functions",
+    "lovable:logs": "lovable logs"
+  }
+}
+
+
