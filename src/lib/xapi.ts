@@ -1,11 +1,35 @@
 // src/lib/xapi.ts
 import axios from "axios";
 
+type XAPIActor = {
+  objectType?: string;
+  mbox?: string;
+  name?: string;
+};
+
+type XAPIVerb = {
+  id: string;
+  display?: Record<string, string>;
+};
+
+type XAPIObject = {
+  id: string;
+  objectType?: string;
+  definition?: Record<string, unknown>;
+};
+
+type XAPIResult = {
+  score?: { scaled?: number; raw?: number; min?: number; max?: number };
+  success?: boolean;
+  completion?: boolean;
+  duration?: string;
+};
+
 type XAPIEvent = {
-  actor: any;
-  verb: any;
-  object: any;
-  result?: any;
+  actor: XAPIActor;
+  verb: XAPIVerb;
+  object: XAPIObject;
+  result?: XAPIResult;
   timestamp?: string;
 };
 
