@@ -1,11 +1,14 @@
-import type { PathStep, Attempt, PathResponse } from "../types/path";
+import type { PathStep, Attempt, PathResponse, PathRequest } from "../types/path";
+import { PathRequestSchema, PathResponseSchema } from "../types/path";
 
-export async function generatePath(opts: { targets?: string[]; attempts?: Attempt[] }): Promise<PathResponse> {
+export async function generatePath(opts: PathRequest): Promise<PathResponse> {
+  // Validate input at runtime
+  const validatedRequest = PathRequestSchema.parse(opts);
   // Simulate API delay
   await new Promise(resolve => setTimeout(resolve, 800));
 
-  const hasFailedLoops = opts.attempts?.some(a => a.concept === "loops" && !a.correct);
-  const hasFailedFunctions = opts.attempts?.some(a => a.concept === "functions" && !a.correct);
+  const hasFailedLoops = validatedRequest.attempts?.some(a => a.concept === "loops" && !a.correct);
+  const hasFailedFunctions = validatedRequest.attempts?.some(a => a.concept === "functions" && !a.correct);
 
   const path: PathStep[] = [
     {
@@ -52,9 +55,12 @@ export async function generatePath(opts: { targets?: string[]; attempts?: Attemp
     }
   ];
 
-  return {
+  const response: PathResponse = {
     mastery: 0.56,
     path,
     userId: "demo-user"
   };
+
+  // Validate output before returning
+  return PathResponseSchema.parse(response);
 }

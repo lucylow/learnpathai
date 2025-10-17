@@ -15,4 +15,31 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Vendor chunk - core React libraries
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          // UI components chunk
+          'ui-vendor': [
+            '@radix-ui/react-avatar',
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-dropdown-menu',
+            '@radix-ui/react-tabs',
+            '@radix-ui/react-toast',
+          ],
+          // Charts chunk (used only in Impact page)
+          'charts': ['chart.js', 'react-chartjs-2'],
+          // Query and state management
+          'data-vendor': ['@tanstack/react-query', 'axios'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+    sourcemap: mode === 'development',
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom'],
+  },
 }));

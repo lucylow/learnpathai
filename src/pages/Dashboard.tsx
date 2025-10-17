@@ -9,8 +9,12 @@ import {
   mockUserStats, 
   getActiveCourses, 
   getRecentAchievements,
-  mockActivities 
+  mockActivities,
+  mockUserProgress 
 } from "@/services/mockData";
+import { XPTracker } from "@/components/gamification/XPTracker";
+import { AITutor } from "@/components/ai/AITutor";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Dashboard = () => {
   const activeCourses = getActiveCourses();
@@ -21,8 +25,28 @@ const Dashboard = () => {
     <Layout>
       <main className="mx-auto max-w-7xl px-6 py-12">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-2">Welcome back!</h1>
-          <p className="text-muted-foreground text-lg">Continue your learning journey</p>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-4xl font-bold text-foreground mb-2">Welcome back!</h1>
+              <p className="text-muted-foreground text-lg">Continue your learning journey</p>
+            </div>
+            <Link to="/learning-path-viewer">
+              <Button variant="outline" size="lg">
+                <Zap className="h-4 w-4 mr-2" />
+                View Knowledge Graph
+              </Button>
+            </Link>
+          </div>
+        </div>
+
+        {/* XP Tracker */}
+        <div className="mb-12">
+          <XPTracker
+            currentXP={mockUserProgress.currentXP}
+            level={mockUserProgress.level}
+            nextLevelXP={mockUserProgress.nextLevelXP}
+            streak={mockUserProgress.streak}
+          />
         </div>
 
         {/* Stats Grid */}
@@ -150,9 +174,16 @@ const Dashboard = () => {
           ))}
         </div>
 
-        {/* Recent Activity */}
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-foreground">Recent Activity</h2>
+         {/* Activity & AI Tutor Tabs */}
+         <div className="space-y-6">
+           <h2 className="text-2xl font-bold text-foreground">Activity & Assistance</h2>
+           <Tabs defaultValue="activity" className="w-full">
+             <TabsList className="grid w-full grid-cols-2">
+               <TabsTrigger value="activity">Recent Activity</TabsTrigger>
+               <TabsTrigger value="tutor">AI Tutor</TabsTrigger>
+             </TabsList>
+             
+             <TabsContent value="activity" className="space-y-4">
           <Card>
             <CardContent className="pt-6">
               <div className="space-y-4">
@@ -181,12 +212,18 @@ const Dashboard = () => {
                     </div>
                   </div>
                 ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </main>
-    </Layout>
+               </div>
+             </CardContent>
+           </Card>
+             </TabsContent>
+
+             <TabsContent value="tutor">
+               <AITutor contextConcept="Python Programming" />
+             </TabsContent>
+           </Tabs>
+         </div>
+       </main>
+     </Layout>
   );
 };
 

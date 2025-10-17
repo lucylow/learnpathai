@@ -1,5 +1,7 @@
+import config from '../lib/config';
+
 export function track(event: string, payload: Record<string, unknown>) {
-  if (import.meta.env.VITE_DISABLE_TELEMETRY === "true") return;
+  if (config.disableTelemetry) return;
   
   const telemetryData = {
     event,

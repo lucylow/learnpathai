@@ -1,19 +1,30 @@
-// Comprehensive mock data for LearnPath AI
+// Mock data service for enhanced Dashboard and features
+
+export const mockUserStats = {
+  activeCourses: 3,
+  completedCourses: 2,
+  learningStreak: 12,
+  averageProgress: 67,
+  averageScore: 85,
+  totalStudyTime: 24,
+  totalXP: 2450,
+  level: 7,
+  nextLevelXP: 3000,
+};
 
 export interface Course {
   id: string;
   title: string;
   description: string;
-  progress: number;
-  totalLessons: number;
-  completedLessons: number;
-  estimatedTime: string;
-  difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
   category: string;
+  difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
+  progress: number;
+  completedLessons: number;
+  totalLessons: number;
+  estimatedTime: string;
   instructor: string;
   rating: number;
-  enrolled: number;
-  lastAccessed?: string;
+  thumbnail?: string;
 }
 
 export interface Achievement {
@@ -21,428 +32,213 @@ export interface Achievement {
   title: string;
   description: string;
   icon: string;
-  earnedDate: string;
   rarity: 'Common' | 'Rare' | 'Epic' | 'Legendary';
+  earnedDate: Date;
+  xpReward: number;
 }
 
-export interface LearningActivity {
+export interface Activity {
   id: string;
   type: 'lesson' | 'quiz' | 'project' | 'discussion';
   title: string;
   course: string;
-  timestamp: string;
-  duration: number; // minutes
+  duration: number;
   score?: number;
+  timestamp: Date;
 }
 
-export interface Recommendation {
-  id: string;
-  type: 'course' | 'article' | 'video' | 'practice';
-  title: string;
-  description: string;
-  reason: string;
-  estimatedTime: string;
-  difficulty: string;
-  thumbnail?: string;
-}
-
-export interface UserStats {
-  activeCourses: number;
-  completedCourses: number;
-  learningStreak: number;
-  totalStudyTime: number; // hours
-  averageProgress: number; // percentage
-  quizzesTaken: number;
-  averageScore: number;
-  skillsLearned: number;
-}
-
-export interface SkillProgress {
-  skill: string;
-  level: number;
-  maxLevel: number;
-  progress: number; // percentage to next level
-  category: string;
-}
-
-// Mock Courses
-export const mockCourses: Course[] = [
+const mockCourses: Course[] = [
   {
-    id: 'course-1',
-    title: 'Python Programming Fundamentals',
-    description: 'Master Python from basics to advanced concepts including OOP, data structures, and more',
-    progress: 65,
-    totalLessons: 48,
-    completedLessons: 31,
-    estimatedTime: '6 weeks',
-    difficulty: 'Beginner',
+    id: '1',
+    title: 'Python Programming',
+    description: 'Master Python from basics to advanced concepts',
     category: 'Programming',
-    instructor: 'Dr. Sarah Johnson',
+    difficulty: 'Intermediate',
+    progress: 65,
+    completedLessons: 13,
+    totalLessons: 20,
+    estimatedTime: '6h remaining',
+    instructor: 'Dr. Sarah Chen',
     rating: 4.8,
-    enrolled: 12450,
-    lastAccessed: '2 hours ago'
   },
   {
-    id: 'course-2',
-    title: 'Modern Web Development with React',
-    description: 'Build modern web applications with React, TypeScript, and best practices',
+    id: '2',
+    title: 'Web Development',
+    description: 'Build modern web applications with React',
+    category: 'Web Development',
+    difficulty: 'Intermediate',
     progress: 42,
-    totalLessons: 56,
-    completedLessons: 24,
-    estimatedTime: '8 weeks',
-    difficulty: 'Intermediate',
-    category: 'Web Development',
-    instructor: 'Alex Chen',
+    completedLessons: 8,
+    totalLessons: 19,
+    estimatedTime: '12h remaining',
+    instructor: 'Alex Rodriguez',
     rating: 4.9,
-    enrolled: 8920,
-    lastAccessed: '1 day ago'
   },
   {
-    id: 'course-3',
+    id: '3',
     title: 'Machine Learning Basics',
-    description: 'Introduction to ML algorithms, neural networks, and practical applications',
+    description: 'Introduction to ML algorithms and applications',
+    category: 'Data Science',
+    difficulty: 'Advanced',
     progress: 28,
-    totalLessons: 64,
-    completedLessons: 18,
-    estimatedTime: '10 weeks',
-    difficulty: 'Advanced',
-    category: 'Artificial Intelligence',
-    instructor: 'Prof. Michael Lee',
+    completedLessons: 7,
+    totalLessons: 25,
+    estimatedTime: '18h remaining',
+    instructor: 'Prof. James Liu',
     rating: 4.7,
-    enrolled: 6780,
-    lastAccessed: '3 days ago'
   },
-  {
-    id: 'course-4',
-    title: 'Data Structures & Algorithms',
-    description: 'Essential DSA concepts for technical interviews and efficient programming',
-    progress: 15,
-    totalLessons: 42,
-    completedLessons: 6,
-    estimatedTime: '7 weeks',
-    difficulty: 'Intermediate',
-    category: 'Computer Science',
-    instructor: 'Jordan Martinez',
-    rating: 4.9,
-    enrolled: 15230,
-    lastAccessed: '5 days ago'
-  },
-  {
-    id: 'course-5',
-    title: 'Full-Stack JavaScript Development',
-    description: 'Complete guide to building full-stack applications with Node.js and React',
-    progress: 0,
-    totalLessons: 72,
-    completedLessons: 0,
-    estimatedTime: '12 weeks',
-    difficulty: 'Advanced',
-    category: 'Web Development',
-    instructor: 'Emma Wilson',
-    rating: 4.8,
-    enrolled: 9450,
-  }
 ];
 
-// Mock Achievements
-export const mockAchievements: Achievement[] = [
+const mockAchievements: Achievement[] = [
   {
-    id: 'ach-1',
-    title: 'First Steps',
-    description: 'Completed your first lesson',
-    icon: '🎯',
-    earnedDate: '2025-01-15',
-    rarity: 'Common'
+    id: '1',
+    title: 'Fast Learner',
+    description: 'Completed 5 lessons in one day',
+    icon: '⚡',
+    rarity: 'Rare',
+    earnedDate: new Date('2025-10-15'),
+    xpReward: 100,
   },
   {
-    id: 'ach-2',
+    id: '2',
+    title: 'Perfect Score',
+    description: 'Achieved 100% on 3 consecutive quizzes',
+    icon: '🎯',
+    rarity: 'Epic',
+    earnedDate: new Date('2025-10-14'),
+    xpReward: 200,
+  },
+  {
+    id: '3',
     title: 'Week Warrior',
     description: 'Maintained a 7-day learning streak',
     icon: '🔥',
-    earnedDate: '2025-02-10',
-    rarity: 'Rare'
+    rarity: 'Rare',
+    earnedDate: new Date('2025-10-12'),
+    xpReward: 150,
   },
   {
-    id: 'ach-3',
-    title: 'Perfect Score',
-    description: 'Achieved 100% on a quiz',
-    icon: '⭐',
-    earnedDate: '2025-03-05',
-    rarity: 'Epic'
+    id: '4',
+    title: 'Code Master',
+    description: 'Completed 10 coding challenges',
+    icon: '💻',
+    rarity: 'Common',
+    earnedDate: new Date('2025-10-10'),
+    xpReward: 50,
   },
-  {
-    id: 'ach-4',
-    title: 'Course Completer',
-    description: 'Finished your first complete course',
-    icon: '🏆',
-    earnedDate: '2025-03-20',
-    rarity: 'Epic'
-  },
-  {
-    id: 'ach-5',
-    title: 'Speed Learner',
-    description: 'Completed 10 lessons in one day',
-    icon: '⚡',
-    earnedDate: '2025-04-12',
-    rarity: 'Rare'
-  }
 ];
 
-// Mock Learning Activities
-export const mockActivities: LearningActivity[] = [
+export const mockActivities: Activity[] = [
   {
-    id: 'act-1',
-    type: 'lesson',
-    title: 'Python Functions and Scope',
-    course: 'Python Programming Fundamentals',
-    timestamp: '2025-10-17T14:30:00Z',
-    duration: 25
-  },
-  {
-    id: 'act-2',
+    id: '1',
     type: 'quiz',
-    title: 'React Hooks Quiz',
-    course: 'Modern Web Development with React',
-    timestamp: '2025-10-16T10:15:00Z',
+    title: 'Functions & Parameters Quiz',
+    course: 'Python Programming',
     duration: 15,
-    score: 92
+    score: 92,
+    timestamp: new Date('2025-10-17T10:30:00'),
   },
   {
-    id: 'act-3',
+    id: '2',
+    type: 'lesson',
+    title: 'Advanced Array Methods',
+    course: 'Web Development',
+    duration: 25,
+    timestamp: new Date('2025-10-17T09:00:00'),
+  },
+  {
+    id: '3',
     type: 'project',
     title: 'Build a Todo App',
-    course: 'Modern Web Development with React',
-    timestamp: '2025-10-15T16:45:00Z',
-    duration: 120
+    course: 'Web Development',
+    duration: 45,
+    score: 88,
+    timestamp: new Date('2025-10-16T14:20:00'),
   },
   {
-    id: 'act-4',
-    type: 'lesson',
-    title: 'Introduction to Neural Networks',
-    course: 'Machine Learning Basics',
-    timestamp: '2025-10-14T11:20:00Z',
-    duration: 35
-  },
-  {
-    id: 'act-5',
+    id: '4',
     type: 'quiz',
-    title: 'Python Basics Assessment',
-    course: 'Python Programming Fundamentals',
-    timestamp: '2025-10-13T09:30:00Z',
+    title: 'ML Fundamentals Assessment',
+    course: 'Machine Learning Basics',
     duration: 20,
-    score: 88
-  }
+    score: 78,
+    timestamp: new Date('2025-10-16T11:00:00'),
+  },
+  {
+    id: '5',
+    type: 'discussion',
+    title: 'Best Practices Discussion',
+    course: 'Python Programming',
+    duration: 10,
+    timestamp: new Date('2025-10-15T16:45:00'),
+  },
 ];
 
-// Mock Recommendations
-export const mockRecommendations: Recommendation[] = [
-  {
-    id: 'rec-1',
-    type: 'course',
-    title: 'Advanced Python Patterns',
-    description: 'Take your Python skills to the next level with design patterns and best practices',
-    reason: 'Based on your progress in Python Programming',
-    estimatedTime: '4 weeks',
-    difficulty: 'Advanced'
-  },
-  {
-    id: 'rec-2',
-    type: 'practice',
-    title: 'React Component Challenges',
-    description: '50 hands-on exercises to master React components',
-    reason: 'Strengthen your React fundamentals',
-    estimatedTime: '2 weeks',
-    difficulty: 'Intermediate'
-  },
-  {
-    id: 'rec-3',
-    type: 'video',
-    title: 'Machine Learning in Production',
-    description: 'Learn how to deploy ML models in real-world applications',
-    reason: 'Next step in your ML journey',
-    estimatedTime: '3 hours',
-    difficulty: 'Advanced'
-  },
-  {
-    id: 'rec-4',
-    type: 'article',
-    title: 'Understanding Big O Notation',
-    description: 'Deep dive into algorithm complexity analysis',
-    reason: 'Essential for Data Structures & Algorithms',
-    estimatedTime: '30 minutes',
-    difficulty: 'Intermediate'
-  }
+export const getActiveCourses = (): Course[] => {
+  return mockCourses;
+};
+
+export const getRecentAchievements = (limit?: number): Achievement[] => {
+  const sorted = [...mockAchievements].sort(
+    (a, b) => b.earnedDate.getTime() - a.earnedDate.getTime()
+  );
+  return limit ? sorted.slice(0, limit) : sorted;
+};
+
+export const getRecentActivities = (limit?: number): Activity[] => {
+  const sorted = [...mockActivities].sort(
+    (a, b) => b.timestamp.getTime() - a.timestamp.getTime()
+  );
+  return limit ? sorted.slice(0, limit) : sorted;
+};
+
+// Gamification data
+export interface UserProgress {
+  currentXP: number;
+  level: number;
+  nextLevelXP: number;
+  streak: number;
+  badges: string[];
+}
+
+export const mockUserProgress: UserProgress = {
+  currentXP: mockUserStats.totalXP,
+  level: mockUserStats.level,
+  nextLevelXP: mockUserStats.nextLevelXP,
+  streak: mockUserStats.learningStreak,
+  badges: ['🏆', '⭐', '💡', '🎓', '🚀'],
+};
+
+// Analytics data for visualization
+export interface ConceptMastery {
+  concept: string;
+  mastery: number;
+  attempts: number;
+  lastPracticed: Date;
+}
+
+export const mockConceptMastery: ConceptMastery[] = [
+  { concept: 'Variables', mastery: 0.92, attempts: 15, lastPracticed: new Date('2025-10-17') },
+  { concept: 'Loops', mastery: 0.78, attempts: 12, lastPracticed: new Date('2025-10-16') },
+  { concept: 'Functions', mastery: 0.65, attempts: 10, lastPracticed: new Date('2025-10-15') },
+  { concept: 'Arrays', mastery: 0.54, attempts: 8, lastPracticed: new Date('2025-10-14') },
+  { concept: 'Objects', mastery: 0.42, attempts: 6, lastPracticed: new Date('2025-10-13') },
+  { concept: 'Classes', mastery: 0.30, attempts: 4, lastPracticed: new Date('2025-10-12') },
 ];
 
-// Mock User Stats
-export const mockUserStats: UserStats = {
-  activeCourses: 3,
-  completedCourses: 2,
-  learningStreak: 12,
-  totalStudyTime: 24,
-  averageProgress: 67,
-  quizzesTaken: 18,
-  averageScore: 87,
-  skillsLearned: 15
-};
+export interface LearningSession {
+  date: string;
+  duration: number; // minutes
+  concepts: number;
+  score: number;
+}
 
-// Mock Skill Progress
-export const mockSkills: SkillProgress[] = [
-  {
-    skill: 'Python',
-    level: 3,
-    maxLevel: 5,
-    progress: 65,
-    category: 'Programming Languages'
-  },
-  {
-    skill: 'React',
-    level: 2,
-    maxLevel: 5,
-    progress: 42,
-    category: 'Frontend Frameworks'
-  },
-  {
-    skill: 'Machine Learning',
-    level: 1,
-    maxLevel: 5,
-    progress: 28,
-    category: 'Artificial Intelligence'
-  },
-  {
-    skill: 'Algorithms',
-    level: 1,
-    maxLevel: 5,
-    progress: 15,
-    category: 'Computer Science'
-  },
-  {
-    skill: 'TypeScript',
-    level: 2,
-    maxLevel: 5,
-    progress: 55,
-    category: 'Programming Languages'
-  },
-  {
-    skill: 'Node.js',
-    level: 2,
-    maxLevel: 5,
-    progress: 38,
-    category: 'Backend Development'
-  }
+export const mockLearningHistory: LearningSession[] = [
+  { date: '2025-10-11', duration: 45, concepts: 3, score: 85 },
+  { date: '2025-10-12', duration: 60, concepts: 4, score: 88 },
+  { date: '2025-10-13', duration: 30, concepts: 2, score: 92 },
+  { date: '2025-10-14', duration: 75, concepts: 5, score: 86 },
+  { date: '2025-10-15', duration: 50, concepts: 3, score: 90 },
+  { date: '2025-10-16', duration: 55, concepts: 4, score: 87 },
+  { date: '2025-10-17', duration: 40, concepts: 3, score: 91 },
 ];
-
-// Mock Learning Path Data
-export const mockLearningPaths = {
-  python: {
-    pathId: 'path-python',
-    title: 'Python Mastery Path',
-    description: 'Complete journey from beginner to advanced Python developer',
-    totalConcepts: 12,
-    completedConcepts: 7,
-    estimatedCompletion: '3 months',
-    concepts: [
-      { name: 'Variables & Data Types', status: 'completed', mastery: 95 },
-      { name: 'Control Flow', status: 'completed', mastery: 90 },
-      { name: 'Functions', status: 'completed', mastery: 85 },
-      { name: 'Data Structures', status: 'in-progress', mastery: 65 },
-      { name: 'OOP Basics', status: 'in-progress', mastery: 45 },
-      { name: 'File Handling', status: 'locked', mastery: 0 },
-      { name: 'Error Handling', status: 'locked', mastery: 0 },
-      { name: 'Modules & Packages', status: 'locked', mastery: 0 },
-    ]
-  },
-  webdev: {
-    pathId: 'path-webdev',
-    title: 'Full-Stack Web Developer Path',
-    description: 'Comprehensive path to becoming a full-stack web developer',
-    totalConcepts: 18,
-    completedConcepts: 8,
-    estimatedCompletion: '6 months',
-    concepts: [
-      { name: 'HTML Fundamentals', status: 'completed', mastery: 100 },
-      { name: 'CSS & Styling', status: 'completed', mastery: 92 },
-      { name: 'JavaScript Basics', status: 'completed', mastery: 88 },
-      { name: 'React Components', status: 'in-progress', mastery: 42 },
-      { name: 'State Management', status: 'in-progress', mastery: 30 },
-      { name: 'Backend APIs', status: 'locked', mastery: 0 },
-      { name: 'Database Design', status: 'locked', mastery: 0 },
-      { name: 'Deployment', status: 'locked', mastery: 0 },
-    ]
-  }
-};
-
-// Mock Quiz Questions
-export const mockQuizQuestions = [
-  {
-    id: 'q1',
-    concept: 'Python Functions',
-    question: 'What is the correct way to define a function in Python?',
-    options: [
-      'function myFunc():',
-      'def myFunc():',
-      'func myFunc():',
-      'define myFunc():'
-    ],
-    correctAnswer: 1,
-    difficulty: 'easy'
-  },
-  {
-    id: 'q2',
-    concept: 'React Hooks',
-    question: 'Which hook is used to manage component state in React?',
-    options: [
-      'useEffect',
-      'useState',
-      'useContext',
-      'useReducer'
-    ],
-    correctAnswer: 1,
-    difficulty: 'medium'
-  },
-  {
-    id: 'q3',
-    concept: 'Data Structures',
-    question: 'What is the time complexity of accessing an element in an array by index?',
-    options: [
-      'O(n)',
-      'O(log n)',
-      'O(1)',
-      'O(n²)'
-    ],
-    correctAnswer: 2,
-    difficulty: 'medium'
-  }
-];
-
-// Helper function to get active courses
-export const getActiveCourses = () => {
-  return mockCourses.filter(course => course.progress > 0 && course.progress < 100);
-};
-
-// Helper function to get completed courses
-export const getCompletedCourses = () => {
-  return mockCourses.filter(course => course.progress === 100);
-};
-
-// Helper function to get recommended next courses
-export const getRecommendedCourses = () => {
-  return mockCourses.filter(course => course.progress === 0).slice(0, 3);
-};
-
-// Helper function to calculate study time this week
-export const getWeeklyStudyTime = () => {
-  const oneWeekAgo = new Date();
-  oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-  
-  return mockActivities
-    .filter(activity => new Date(activity.timestamp) >= oneWeekAgo)
-    .reduce((total, activity) => total + activity.duration, 0);
-};
-
-// Helper function to get recent achievements
-export const getRecentAchievements = (count: number = 3) => {
-  return mockAchievements
-    .sort((a, b) => new Date(b.earnedDate).getTime() - new Date(a.earnedDate).getTime())
-    .slice(0, count);
-};
-

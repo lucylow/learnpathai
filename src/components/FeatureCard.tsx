@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { LucideIcon } from "lucide-react";
 
 interface FeatureCardProps {
@@ -6,7 +7,7 @@ interface FeatureCardProps {
   description: string;
 }
 
-export const FeatureCard = ({ icon: Icon, title, description }: FeatureCardProps) => {
+export const FeatureCard = memo(({ icon: Icon, title, description }: FeatureCardProps) => {
   return (
     <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 transition-all duration-300 hover:shadow-[var(--shadow-card)] hover:scale-[1.02]">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -19,4 +20,6 @@ export const FeatureCard = ({ icon: Icon, title, description }: FeatureCardProps
       </div>
     </div>
   );
-};
+});
+
+FeatureCard.displayName = 'FeatureCard';

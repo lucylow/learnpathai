@@ -1,5 +1,6 @@
 // src/lib/xapi.ts
 import axios from "axios";
+import config from './config';
 
 type XAPIActor = {
   objectType?: string;
@@ -33,7 +34,7 @@ type XAPIEvent = {
   timestamp?: string;
 };
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001";
+const BACKEND_URL = config.backendUrl;
 
 export default async function sendXAPIEvent(event: XAPIEvent){
   try{
