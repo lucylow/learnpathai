@@ -1,0 +1,111 @@
+{
+  "events": [],
+  "contacts": [],
+  "users": [],
+  "kt_cache": [
+    {
+      "userId": "test_user",
+      "createdAt": "2025-10-17T01:33:45.504Z",
+      "mastery": {},
+      "path": [
+        {
+          "concept": "variables",
+          "mastery": 0,
+          "resources": [
+            "res_vars_1"
+          ]
+        },
+        {
+          "concept": "loops",
+          "mastery": 0,
+          "resources": [
+            "res_loops_1"
+          ]
+        },
+        {
+          "concept": "functions",
+          "mastery": 0,
+          "resources": [
+            "res_funcs_1"
+          ]
+        },
+        {
+          "concept": "arrays",
+          "mastery": 0,
+          "resources": [
+            "res_arrays_1"
+          ]
+        },
+        {
+          "concept": "project",
+          "mastery": 0,
+          "resources": [
+            "res_project_1"
+          ]
+        }
+      ],
+      "recentAttempts": [
+        {
+          "concept": "variables",
+          "correct": true
+        },
+        {
+          "concept": "loops",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "userId": "test_user",
+      "createdAt": "2025-10-17T01:35:58.462Z",
+      "mastery": {},
+      "path": [
+        {
+          "concept": "variables",
+          "mastery": 0,
+          "resources": [
+            "res_vars_1"
+          ]
+        },
+        {
+          "concept": "loops",
+          "mastery": 0,
+          "resources": [
+            "res_loops_1"
+          ]
+        },
+        {
+          "concept": "functions",
+          "mastery": 0,
+          "resources": [
+            "res_funcs_1"
+          ]
+        },
+        {
+          "concept": "arrays",
+          "mastery": 0,
+          "resources": [
+            "res_arrays_1"
+          ]
+        },
+        {
+          "concept": "project",
+          "mastery": 0,
+          "resources": [
+            "res_project_1"
+          ]
+        }
+      ],
+      "recentAttempts": [
+        {
+          "concept": "variables",
+          "correct": true
+        },
+        {
+          "concept": "loops",
+          "correct": false
+        }
+      ]
+    }
+  ]
+}
