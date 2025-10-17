@@ -1,0 +1,21 @@
+{
+  "welcome": "Welcome back, {{name}}!",
+  "welcomeGuest": "Welcome to LearnPath AI!",
+  "conceptsToMaster": "You have {{count}} concept to master",
+  "conceptsToMaster_plural": "You have {{count}} concepts to master",
+  "conceptsToMaster_zero": "You have no concepts to master yet - start learning!",
+  "overallProgress": "Overall Progress: {{progress}}%",
+  "masteryLevel": "Mastery Level",
+  "learningStreak": "Learning Streak: {{days}} day",
+  "learningStreak_plural": "Learning Streak: {{days}} days",
+  "lastActive": "Last Active",
+  "totalTimeSpent": "Total Time Spent",
+  "completedConcepts": "Completed Concepts",
+  "inProgress": "In Progress",
+  "notStarted": "Not Started",
+  "recommendedPath": "Your Recommended Path",
+  "continueLearning": "Continue Learning",
+  "viewProgress": "View Progress",
+  "settings": "Settings"
+}
+

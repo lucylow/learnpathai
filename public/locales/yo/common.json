@@ -1,0 +1,55 @@
+{
+  "appName": "LearnPath AI",
+  "tagline": "Ìrìn-àjò Ẹ̀kọ́ Rẹ Ti AI Ń Darí",
+  "navigation": {
+    "home": "Ilé",
+    "dashboard": "Pátákó Àlàyé",
+    "learningPath": "Ọ̀nà Ẹ̀kọ́",
+    "livePathKT": "Ọ̀nà Láìsí (KT)",
+    "features": "Àwọn Ẹ̀yà",
+    "impact": "Ipa",
+    "team": "Ẹgbẹ́",
+    "docs": "Ìwé-àkọsílẹ̀",
+    "contact": "Kàn Sí Wa",
+    "about": "Nípa Wa",
+    "profile": "Ìwé Àlàyé"
+  },
+  "actions": {
+    "startLearning": "Bẹ̀rẹ̀ Ẹ̀kọ́",
+    "continue": "Tẹ̀síwájú",
+    "save": "Fi pamọ́",
+    "cancel": "Pa Á Rẹ́",
+    "submit": "Fi Sílẹ̌",
+    "getStarted": "Bẹ̀rẹ̀ Báyìí",
+    "markComplete": "Sàmì Sí Bí Ó Ti Parí",
+    "openResource": "Ṣí Ohun Èlò",
+    "viewAll": "Wo Gbogbo Rẹ̀",
+    "learnMore": "Kọ́ Síi"
+  },
+  "common": {
+    "loading": "Ó ń Kó...",
+    "error": "Àsìṣe kan wáyé",
+    "success": "Àṣeyọrí!",
+    "language": "Èdè",
+    "selectLanguage": "Yan Èdè",
+    "searchLanguage": "Wá èdè...",
+    "noLanguagesFound": "Kò sí èdè tí a rí",
+    "languageNote": "Àwọn èdè míràn ń bọ̀ láìpẹ́! Ràn wá lọ́wọ́ láti túmọ̀ ní github.com/lucylow/learnpathai",
+    "offline": "Kò sí ìbánisọ̀rọ̀",
+    "online": "Ní orí ayélujára",
+    "retry": "Gbìyànjú Lẹ́ẹ̀kan Síi"
+  },
+  "footer": {
+    "madeWith": "A ṣe é pẹ̀lú ❤️ fún àwọn akẹ́kọ̀ọ́ káàkiri ayé",
+    "termsOfService": "Àwọn Ọ̀rọ̀ Iṣẹ́",
+    "privacyPolicy": "Ìlànà Ìdáàbòbò",
+    "contactUs": "Kàn Sí Wa",
+    "followUs": "Tẹ̀lé Wa"
+  },
+  "offlineMode": {
+    "title": "Ìṣẹ́ Àìsí Lórí Ayélujára",
+    "message": "Díẹ̀ nínú àwọn ìtumọ̀ le má wà. Darapọ̀ mọ́ íńtánẹ́ẹ̀tì láti gba àwọn èdè míràn.",
+    "translationsUnavailable": "Àwọn ìtumọ̀ fún {{language}} kò sí láìsí íńtánẹ́ẹ̀tì"
+  }
+}
+

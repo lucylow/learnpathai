@@ -1,6 +1,6 @@
 // src/lib/xapi.ts
 import axios from "axios";
-import config from './config';
+import config from '@/lib/config';
 
 type XAPIActor = {
   objectType?: string;

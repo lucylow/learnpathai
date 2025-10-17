@@ -1,0 +1,25 @@
+{
+  "yourLearningPath": "Your Learning Path",
+  "personalizedRecommendations": "Personalized recommendations based on your mastery levels",
+  "progress": "Progress",
+  "completedSteps": "{{count}} of {{total}} concepts completed",
+  "stepNumber": "Step {{number}}",
+  "currentMastery": "Current mastery: {{mastery}}%",
+  "resources": "Resources",
+  "prerequisites": "Prerequisites",
+  "completed": "Completed",
+  "markAsComplete": "Mark as Complete",
+  "noRecommendations": "No Recommendations Found",
+  "allMastered": "You've mastered all the concepts! Great job! 🎉",
+  "loadingPath": "Loading your personalized path...",
+  "errorLoadingPath": "Failed to load learning path. Please try again.",
+  "concept": "Concept",
+  "difficulty": "Difficulty",
+  "estimatedTime": "Estimated Time",
+  "beginner": "Beginner",
+  "intermediate": "Intermediate",
+  "advanced": "Advanced",
+  "minutes": "{{count}} minute",
+  "minutes_plural": "{{count}} minutes"
+}
+

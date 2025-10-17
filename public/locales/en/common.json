@@ -1,0 +1,55 @@
+{
+  "appName": "LearnPath AI",
+  "tagline": "Your AI-Powered Learning Journey",
+  "navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "learningPath": "Learning Path",
+    "livePathKT": "Live Path (KT)",
+    "features": "Features",
+    "impact": "Impact",
+    "team": "Team",
+    "docs": "Documentation",
+    "contact": "Contact",
+    "about": "About",
+    "profile": "Profile"
+  },
+  "actions": {
+    "startLearning": "Start Learning",
+    "continue": "Continue",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "getStarted": "Get Started",
+    "markComplete": "Mark Complete",
+    "openResource": "Open Resource",
+    "viewAll": "View All",
+    "learnMore": "Learn More"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success!",
+    "language": "Language",
+    "selectLanguage": "Select Language",
+    "searchLanguage": "Search languages...",
+    "noLanguagesFound": "No languages found",
+    "languageNote": "More languages coming soon! Help us translate at github.com/lucylow/learnpathai",
+    "offline": "Offline",
+    "online": "Online",
+    "retry": "Retry"
+  },
+  "footer": {
+    "madeWith": "Made with ❤️ for learners worldwide",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "contactUs": "Contact Us",
+    "followUs": "Follow Us"
+  },
+  "offlineMode": {
+    "title": "Offline Mode",
+    "message": "Some translations may not be available. Connect to internet to download more languages.",
+    "translationsUnavailable": "Translations for {{language}} are not available offline"
+  }
+}
+

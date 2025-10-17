@@ -1,0 +1,55 @@
+{
+  "appName": "LearnPath AI",
+  "tagline": "Safari Yako ya Kujifunza Inayotumia AI",
+  "navigation": {
+    "home": "Nyumbani",
+    "dashboard": "Dashibodi",
+    "learningPath": "Njia ya Kujifunza",
+    "livePathKT": "Njia ya Moja kwa Moja (KT)",
+    "features": "Vipengele",
+    "impact": "Athari",
+    "team": "Timu",
+    "docs": "Hati",
+    "contact": "Wasiliana",
+    "about": "Kuhusu",
+    "profile": "Wasifu"
+  },
+  "actions": {
+    "startLearning": "Anza Kujifunza",
+    "continue": "Endelea",
+    "save": "Hifadhi",
+    "cancel": "Ghairi",
+    "submit": "Wasilisha",
+    "getStarted": "Anza Sasa",
+    "markComplete": "Weka Alama Kama Imekamilika",
+    "openResource": "Fungua Rasilimali",
+    "viewAll": "Angalia Zote",
+    "learnMore": "Jifunze Zaidi"
+  },
+  "common": {
+    "loading": "Inapakia...",
+    "error": "Kosa limetokea",
+    "success": "Imefanikiwa!",
+    "language": "Lugha",
+    "selectLanguage": "Chagua Lugha",
+    "searchLanguage": "Tafuta lugha...",
+    "noLanguagesFound": "Hakuna lugha zilizopatikana",
+    "languageNote": "Lugha zaidi zinakuja hivi karibuni! Tusaidie kutafsiri kwa github.com/lucylow/learnpathai",
+    "offline": "Nje ya mtandao",
+    "online": "Kwenye mtandao",
+    "retry": "Jaribu Tena"
+  },
+  "footer": {
+    "madeWith": "Imetengenezwa kwa ❤️ kwa wanafunzi duniani kote",
+    "termsOfService": "Masharti ya Huduma",
+    "privacyPolicy": "Sera ya Faragha",
+    "contactUs": "Wasiliana Nasi",
+    "followUs": "Tufuate"
+  },
+  "offlineMode": {
+    "title": "Hali ya Nje ya Mtandao",
+    "message": "Tafsiri fulani zinaweza kutokupatikana. Unganisha kwenye mtandao kupakua lugha zaidi.",
+    "translationsUnavailable": "Tafsiri za {{language}} hazipatikani nje ya mtandao"
+  }
+}
+

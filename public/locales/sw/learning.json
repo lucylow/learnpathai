@@ -1,0 +1,25 @@
+{
+  "yourLearningPath": "Njia Yako ya Kujifunza",
+  "personalizedRecommendations": "Mapendekezo maalum kulingana na viwango vyako vya ustadi",
+  "progress": "Maendeleo",
+  "completedSteps": "{{count}} kati ya {{total}} dhana zimekamilika",
+  "stepNumber": "Hatua ya {{number}}",
+  "currentMastery": "Ustadi wa sasa: {{mastery}}%",
+  "resources": "Rasilimali",
+  "prerequisites": "Mahitaji ya Awali",
+  "completed": "Imekamilika",
+  "markAsComplete": "Weka Alama Kama Imekamilika",
+  "noRecommendations": "Hakuna Mapendekezo Yaliyopatikana",
+  "allMastered": "Umekamilisha dhana zote! Hongera! 🎉",
+  "loadingPath": "Inapakia njia yako maalum...",
+  "errorLoadingPath": "Imeshindwa kupakia njia ya kujifunza. Tafadhali jaribu tena.",
+  "concept": "Dhana",
+  "difficulty": "Ugumu",
+  "estimatedTime": "Muda Unaokadiriwa",
+  "beginner": "Mwanzilishi",
+  "intermediate": "Wa Kati",
+  "advanced": "Wa Juu",
+  "minutes": "dakika {{count}}",
+  "minutes_plural": "dakika {{count}}"
+}
+

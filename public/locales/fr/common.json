@@ -1,0 +1,55 @@
+{
+  "appName": "LearnPath AI",
+  "tagline": "Votre Parcours d'Apprentissage Alimenté par l'IA",
+  "navigation": {
+    "home": "Accueil",
+    "dashboard": "Tableau de bord",
+    "learningPath": "Parcours d'apprentissage",
+    "livePathKT": "Parcours en direct (KT)",
+    "features": "Fonctionnalités",
+    "impact": "Impact",
+    "team": "Équipe",
+    "docs": "Documentation",
+    "contact": "Contact",
+    "about": "À propos",
+    "profile": "Profil"
+  },
+  "actions": {
+    "startLearning": "Commencer à apprendre",
+    "continue": "Continuer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "submit": "Soumettre",
+    "getStarted": "Commencer maintenant",
+    "markComplete": "Marquer comme terminé",
+    "openResource": "Ouvrir la ressource",
+    "viewAll": "Voir tout",
+    "learnMore": "En savoir plus"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "success": "Succès !",
+    "language": "Langue",
+    "selectLanguage": "Sélectionner la langue",
+    "searchLanguage": "Rechercher des langues...",
+    "noLanguagesFound": "Aucune langue trouvée",
+    "languageNote": "Plus de langues à venir ! Aidez-nous à traduire sur github.com/lucylow/learnpathai",
+    "offline": "Hors ligne",
+    "online": "En ligne",
+    "retry": "Réessayer"
+  },
+  "footer": {
+    "madeWith": "Fait avec ❤️ pour les apprenants du monde entier",
+    "termsOfService": "Conditions d'utilisation",
+    "privacyPolicy": "Politique de confidentialité",
+    "contactUs": "Contactez-nous",
+    "followUs": "Suivez-nous"
+  },
+  "offlineMode": {
+    "title": "Mode hors ligne",
+    "message": "Certaines traductions peuvent ne pas être disponibles. Connectez-vous à Internet pour télécharger plus de langues.",
+    "translationsUnavailable": "Les traductions pour {{language}} ne sont pas disponibles hors ligne"
+  }
+}
+

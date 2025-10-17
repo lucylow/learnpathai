@@ -1,0 +1,137 @@
+/* RTL (Right-to-Left) Support for Arabic and other RTL languages */
+
+/* Automatic RTL flipping */
+[dir="rtl"] {
+  --tw-space-x-reverse: 1;
+  --tw-divide-x-reverse: 1;
+}
+
+/* Text alignment */
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+/* Padding and margins */
+[dir="rtl"] .pl-4 {
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+[dir="rtl"] .pr-4 {
+  padding-right: 0;
+  padding-left: 1rem;
+}
+
+[dir="rtl"] .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+[dir="rtl"] .mr-auto {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* Flex direction */
+[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+/* Mirrored icons and arrows */
+[dir="rtl"] .icon-arrow-right,
+[dir="rtl"] .lucide-arrow-right,
+[dir="rtl"] .lucide-chevron-right {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .icon-arrow-left,
+[dir="rtl"] .lucide-arrow-left,
+[dir="rtl"] .lucide-chevron-left {
+  transform: scaleX(-1);
+}
+
+/* Progress bars */
+[dir="rtl"] .progress-bar {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .progress-bar-fill {
+  transform: scaleX(-1);
+}
+
+/* Tooltips */
+[dir="rtl"] .tooltip-left {
+  left: auto;
+  right: 100%;
+}
+
+[dir="rtl"] .tooltip-right {
+  right: auto;
+  left: 100%;
+}
+
+/* Modals and dropdowns */
+[dir="rtl"] .dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+/* Borders */
+[dir="rtl"] .border-l {
+  border-left: 0;
+  border-right: 1px solid;
+}
+
+[dir="rtl"] .border-r {
+  border-right: 0;
+  border-left: 1px solid;
+}
+
+/* Border radius */
+[dir="rtl"] .rounded-l {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+[dir="rtl"] .rounded-r {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+/* Shadows */
+[dir="rtl"] .shadow-sm {
+  box-shadow: -1px 0 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Transform for navigation arrows */
+[dir="rtl"] .nav-arrow {
+  transform: rotate(180deg);
+}
+
+/* List styles */
+[dir="rtl"] ul,
+[dir="rtl"] ol {
+  padding-left: 0;
+  padding-right: 2rem;
+}
+
+/* Input fields */
+[dir="rtl"] input[type="search"]::-webkit-search-cancel-button {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+/* Scrollbar */
+[dir="rtl"]::-webkit-scrollbar {
+  left: 0;
+  right: auto;
+}
+

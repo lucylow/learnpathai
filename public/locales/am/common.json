@@ -1,0 +1,55 @@
+{
+  "appName": "LearnPath AI",
+  "tagline": "በAI የሚመራ የመማሪያ ጉዞዎ",
+  "navigation": {
+    "home": "መነሻ",
+    "dashboard": "ዳሽቦርድ",
+    "learningPath": "የመማሪያ መንገድ",
+    "livePathKT": "የቀጥታ መንገድ (KT)",
+    "features": "ባህሪያት",
+    "impact": "ተጽእኖ",
+    "team": "ቡድን",
+    "docs": "ሰነዶች",
+    "contact": "አግኙን",
+    "about": "ስለ እኛ",
+    "profile": "መገለጫ"
+  },
+  "actions": {
+    "startLearning": "መማር ይጀምሩ",
+    "continue": "ቀጥል",
+    "save": "አስቀምጥ",
+    "cancel": "ሰርዝ",
+    "submit": "አስገባ",
+    "getStarted": "አሁን ይጀምሩ",
+    "markComplete": "እንደተጠናቀቀ ምልክት ያድርጉ",
+    "openResource": "ግብዓት ክፈት",
+    "viewAll": "ሁሉንም ይመልከቱ",
+    "learnMore": "ተጨማሪ ይማሩ"
+  },
+  "common": {
+    "loading": "በመጫን ላይ...",
+    "error": "ስህተት ተከስቷል",
+    "success": "ተሳክቷል!",
+    "language": "ቋንቋ",
+    "selectLanguage": "ቋንቋ ይምረጡ",
+    "searchLanguage": "ቋንቋዎችን ፈልግ...",
+    "noLanguagesFound": "ምንም ቋንቋዎች አልተገኙም",
+    "languageNote": "ተጨማሪ ቋንቋዎች በቅርቡ በመምጣት ላይ ናቸው! በ github.com/lucylow/learnpathai ላይ እንድንተረጉም ይርዱን",
+    "offline": "ከመስመር ውጭ",
+    "online": "በመስመር ላይ",
+    "retry": "እንደገና ሞክር"
+  },
+  "footer": {
+    "madeWith": "በዓለም ዙሪያ ላሉ ተማሪዎች በ❤️ የተሰራ",
+    "termsOfService": "የአገልግሎት ውሎች",
+    "privacyPolicy": "የግላዊነት ፖሊሲ",
+    "contactUs": "አግኙን",
+    "followUs": "ይከተሉን"
+  },
+  "offlineMode": {
+    "title": "ከመስመር ውጭ ሁኔታ",
+    "message": "አንዳንድ ትርጉሞች ላይገኙ ይችላሉ። ተጨማሪ ቋንቋዎችን ለማውረድ ከበይነመረብ ጋር ይገናኙ።",
+    "translationsUnavailable": "የ{{language}} ትርጉሞች ከመስመር ውጭ አይገኙም"
+  }
+}
+

@@ -1,0 +1,55 @@
+{
+  "appName": "LearnPath AI",
+  "tagline": "Tafiyar Koyo Ta AI Ta Ku",
+  "navigation": {
+    "home": "Gida",
+    "dashboard": "Allon Bayanai",
+    "learningPath": "Hanyar Koyo",
+    "livePathKT": "Hanya Kai Tsaye (KT)",
+    "features": "Abubuwan da ke ciki",
+    "impact": "Tasiri",
+    "team": "Ƙungiya",
+    "docs": "Takaddun Bayani",
+    "contact": "Tuntuɓi Mu",
+    "about": "Game da Mu",
+    "profile": "Bayanin Martaba"
+  },
+  "actions": {
+    "startLearning": "Fara Koyo",
+    "continue": "Ci Gaba",
+    "save": "Ajiye",
+    "cancel": "Soke",
+    "submit": "Ƙaddamar",
+    "getStarted": "Fara Yanzu",
+    "markComplete": "Yi Alama Cewa An Gama",
+    "openResource": "Buɗe Albarkatun",
+    "viewAll": "Duba Duka",
+    "learnMore": "Ƙara Koyo"
+  },
+  "common": {
+    "loading": "Ana ɗaukar nauyi...",
+    "error": "Kuskure ya faru",
+    "success": "Nasara!",
+    "language": "Harshe",
+    "selectLanguage": "Zaɓi Harshe",
+    "searchLanguage": "Nemo harsuna...",
+    "noLanguagesFound": "Ba a sami harsuna ba",
+    "languageNote": "Ƙarin harsuna suna zuwa nan gaba! Taimaka mu fassara a github.com/lucylow/learnpathai",
+    "offline": "Babu hanyar sadarwa",
+    "online": "Akwai hanyar sadarwa",
+    "retry": "Sake Gwadawa"
+  },
+  "footer": {
+    "madeWith": "An yi shi da ❤️ don ɗalibai a duk duniya",
+    "termsOfService": "Sharuɗɗan Sabis",
+    "privacyPolicy": "Manufar Sirri",
+    "contactUs": "Tuntuɓi Mu",
+    "followUs": "Bi Mu"
+  },
+  "offlineMode": {
+    "title": "Yanayin Babu Hanyar Sadarwa",
+    "message": "Wasu fassarori ba za su kasance ba. Haɗa zuwa intanet don saukar ƙarin harsuna.",
+    "translationsUnavailable": "Fassarar {{language}} ba ta samuwa ba tare da intanet"
+  }
+}
+

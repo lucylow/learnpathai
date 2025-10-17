@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Menu, X, Sparkles, GraduationCap, BarChart3, Users, BookOpen, Mail, FileText } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { useTranslation } from 'react-i18next';
 
 const navigationItems = [
   {
@@ -77,6 +79,7 @@ export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -175,12 +178,15 @@ export function Navigation() {
               </NavigationMenuList>
             </NavigationMenu>
 
+            {/* Language Switcher */}
+            <LanguageSwitcher className="ml-4" />
+
             {/* CTA Button */}
             <Button
               asChild
-              className="bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-lg"
+              className="bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-lg ml-4"
             >
-              <Link to="/dashboard">Get Started</Link>
+              <Link to="/dashboard">{t('actions.getStarted')}</Link>
             </Button>
           </nav>
 
@@ -261,11 +267,19 @@ export function Navigation() {
                   </ul>
                 </div>
 
+                {/* Language Switcher (Mobile) */}
+                <div className="pt-6 border-t border-border">
+                  <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wider mb-3">
+                    {t('common.language')}
+                  </h4>
+                  <LanguageSwitcher className="w-full" />
+                </div>
+
                 <Button
                   asChild
                   className="w-full bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90 transition-opacity mt-4"
                 >
-                  <Link to="/dashboard">Get Started</Link>
+                  <Link to="/dashboard">{t('actions.getStarted')}</Link>
                 </Button>
               </nav>
             </SheetContent>

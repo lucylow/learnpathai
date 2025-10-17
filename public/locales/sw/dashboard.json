@@ -1,0 +1,21 @@
+{
+  "welcome": "Karibu tena, {{name}}!",
+  "welcomeGuest": "Karibu kwenye LearnPath AI!",
+  "conceptsToMaster": "Una dhana {{count}} ya kujifunza",
+  "conceptsToMaster_plural": "Una dhana {{count}} za kujifunza",
+  "conceptsToMaster_zero": "Bado huna dhana za kujifunza - anza sasa!",
+  "overallProgress": "Maendeleo ya Jumla: {{progress}}%",
+  "masteryLevel": "Kiwango cha Ustadi",
+  "learningStreak": "Mfululizo wa Kujifunza: siku {{days}}",
+  "learningStreak_plural": "Mfululizo wa Kujifunza: siku {{days}}",
+  "lastActive": "Ulikuwa Hai Mwisho",
+  "totalTimeSpent": "Jumla ya Muda Uliotumia",
+  "completedConcepts": "Dhana Zilizokamilika",
+  "inProgress": "Inaendelea",
+  "notStarted": "Hazijaanza",
+  "recommendedPath": "Njia Yako Inayopendekezwa",
+  "continueLearning": "Endelea Kujifunza",
+  "viewProgress": "Angalia Maendeleo",
+  "settings": "Mipangilio"
+}
+

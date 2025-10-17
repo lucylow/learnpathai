@@ -1,0 +1,55 @@
+{
+  "appName": "LearnPath AI",
+  "tagline": "رحلة التعلم المدعومة بالذكاء الاصطناعي",
+  "navigation": {
+    "home": "الرئيسية",
+    "dashboard": "لوحة التحكم",
+    "learningPath": "مسار التعلم",
+    "livePathKT": "المسار المباشر (KT)",
+    "features": "الميزات",
+    "impact": "التأثير",
+    "team": "الفريق",
+    "docs": "الوثائق",
+    "contact": "اتصل بنا",
+    "about": "معلومات عنا",
+    "profile": "الملف الشخصي"
+  },
+  "actions": {
+    "startLearning": "ابدأ التعلم",
+    "continue": "متابعة",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "submit": "إرسال",
+    "getStarted": "ابدأ الآن",
+    "markComplete": "وضع علامة مكتمل",
+    "openResource": "فتح المورد",
+    "viewAll": "عرض الكل",
+    "learnMore": "تعلم المزيد"
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "success": "نجاح!",
+    "language": "اللغة",
+    "selectLanguage": "اختر اللغة",
+    "searchLanguage": "البحث عن لغات...",
+    "noLanguagesFound": "لم يتم العثور على لغات",
+    "languageNote": "المزيد من اللغات قادمة قريباً! ساعدنا في الترجمة على github.com/lucylow/learnpathai",
+    "offline": "غير متصل",
+    "online": "متصل",
+    "retry": "إعادة المحاولة"
+  },
+  "footer": {
+    "madeWith": "صنع بـ ❤️ للمتعلمين في جميع أنحاء العالم",
+    "termsOfService": "شروط الخدمة",
+    "privacyPolicy": "سياسة الخصوصية",
+    "contactUs": "اتصل بنا",
+    "followUs": "تابعنا"
+  },
+  "offlineMode": {
+    "title": "وضع عدم الاتصال",
+    "message": "قد لا تتوفر بعض الترجمات. اتصل بالإنترنت لتنزيل المزيد من اللغات.",
+    "translationsUnavailable": "ترجمات {{language}} غير متوفرة دون اتصال"
+  }
+}
+
