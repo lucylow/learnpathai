@@ -19,6 +19,8 @@ from models.dkt import DKTPredictor
 from models.beta_kt import BetaKT
 from rag_explainer import RAGExplainer
 from resource_ranker import ResourceRanker, UserProfile, Resource
+from explainer_service import ExplanationGenerator
+from evidence_tracker import EvidenceTracker
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -41,6 +43,8 @@ dkt_predictor: Optional[DKTPredictor] = None
 beta_kt: BetaKT = BetaKT()
 rag_explainer: Optional[RAGExplainer] = None
 resource_ranker: Optional[ResourceRanker] = None
+explainer: ExplanationGenerator = ExplanationGenerator(use_llm=False)
+evidence_tracker: EvidenceTracker = EvidenceTracker()
 knowledge_graph: Dict = {}
 resources_db: List[Dict] = []
 
@@ -96,6 +100,45 @@ class ContentAnalysisRequest(BaseModel):
     """Request for content analysis."""
     text: Optional[str] = None
     video_path: Optional[str] = None
+
+
+class WhyThisRequest(BaseModel):
+    """Request for 'Why this?' explanation."""
+    resource_id: str
+    resource_title: str
+    concept: str
+    mastery_level: float
+    recent_attempts: List[Attempt] = Field(default_factory=list)
+    transcript_excerpt: Optional[str] = None
+
+
+class PathDecisionRequest(BaseModel):
+    """Request for path decision explanation."""
+    current_concept: str
+    next_concept: str
+    mastery_map: Dict[str, float]
+    path_algorithm: str = "optimal"
+
+
+class KTPredictionExplanationRequest(BaseModel):
+    """Request for KT prediction explanation."""
+    concept: str
+    prior: float
+    posterior: float
+    recent_attempts: List[Attempt]
+    model_type: str = "beta"
+
+
+class EvidencePanelRequest(BaseModel):
+    """Request for evidence panel."""
+    decision_id: str
+
+
+class EnsemblePredictionRequest(BaseModel):
+    """Request for ensemble KT prediction."""
+    user_id: str
+    recent_attempts: List[Attempt]
+    prior_mastery: Dict[str, float] = Field(default_factory=dict)
 
 
 # Startup: load models and data
@@ -391,9 +434,210 @@ async def get_stats():
             "dkt": dkt_predictor is not None,
             "beta_kt": True,
             "rag": rag_explainer is not None,
-            "ranker": resource_ranker is not None
+            "ranker": resource_ranker is not None,
+            "explainer": True,
+            "evidence_tracker": True
         }
     }
+
+
+@app.post("/explain/why_this")
+async def explain_why_this(req: WhyThisRequest):
+    """
+    Generate 'Why this?' explanation for a recommended resource.
+    Returns explainable reasoning with evidence and citations.
+    """
+    # Convert attempts to evidence format
+    evidence = {
+        "recent_attempts": [
+            {"correct": att.correct, "concept": att.concept, "timestamp": att.timestamp}
+            for att in req.recent_attempts
+        ]
+    }
+    
+    # Generate explanation
+    explanation = explainer.explain_recommendation(
+        resource_title=req.resource_title,
+        concept=req.concept,
+        mastery_level=req.mastery_level,
+        evidence=evidence,
+        transcript_excerpt=req.transcript_excerpt
+    )
+    
+    # Record decision for audit trail
+    decision_id = f"rec_{req.resource_id}_{req.concept}"
+    evidence_tracker.record_decision(
+        decision_id=decision_id,
+        decision_type="recommendation",
+        learner_id=f"learner_{hash(req.resource_id) % 10000}",  # Demo anonymization
+        inputs={
+            "resource_id": req.resource_id,
+            "concept": req.concept,
+            "mastery_level": req.mastery_level
+        },
+        outputs=explanation,
+        model_used="ExplanationGenerator",
+        confidence=explanation.get("confidence", 0.8)
+    )
+    
+    return {
+        **explanation,
+        "decision_id": decision_id
+    }
+
+
+@app.post("/explain/path_decision")
+async def explain_path_decision(req: PathDecisionRequest):
+    """
+    Explain why the path algorithm chose the next concept.
+    """
+    explanation = explainer.explain_path_decision(
+        current_concept=req.current_concept,
+        next_concept=req.next_concept,
+        kt_posterior=req.mastery_map,
+        path_algorithm=req.path_algorithm
+    )
+    
+    return explanation
+
+
+@app.post("/explain/kt_prediction")
+async def explain_kt_prediction(req: KTPredictionExplanationRequest):
+    """
+    Explain a knowledge tracing prediction update.
+    """
+    evidence = [
+        {"correct": att.correct, "concept": att.concept, "timestamp": att.timestamp}
+        for att in req.recent_attempts
+    ]
+    
+    explanation = explainer.explain_kt_prediction(
+        concept=req.concept,
+        prior=req.prior,
+        posterior=req.posterior,
+        evidence=evidence,
+        model_type=req.model_type
+    )
+    
+    return explanation
+
+
+@app.post("/evidence/panel")
+async def get_evidence_panel(req: EvidencePanelRequest):
+    """
+    Get complete evidence panel for a decision (audit/traceability).
+    """
+    # Get decision from evidence tracker
+    decision = evidence_tracker.get_evidence_for_decision(req.decision_id)
+    
+    if not decision:
+        raise HTTPException(status_code=404, detail="Decision not found")
+    
+    # Generate comprehensive evidence panel
+    panel = explainer.generate_evidence_panel(
+        decision_id=req.decision_id,
+        decision_type=decision["decision_type"],
+        events=evidence_tracker.get_relevant_events(
+            learner_id=decision["learner_id"],
+            limit=20
+        ),
+        model_outputs=decision["outputs"],
+        resources_used=[
+            {
+                "id": decision["inputs"].get("resource_id", "unknown"),
+                "title": decision["outputs"].get("reason", "Unknown resource")
+            }
+        ]
+    )
+    
+    return panel
+
+
+@app.post("/evidence/audit_report")
+async def get_audit_report(req: EvidencePanelRequest):
+    """
+    Generate a comprehensive audit report for a decision.
+    """
+    report = evidence_tracker.generate_audit_report(
+        decision_id=req.decision_id,
+        include_raw_data=True
+    )
+    
+    if "error" in report:
+        raise HTTPException(status_code=404, detail=report["error"])
+    
+    return report
+
+
+@app.post("/predict_mastery/ensemble")
+async def predict_mastery_ensemble(req: EnsemblePredictionRequest):
+    """
+    Predict mastery using ensemble of Beta + DKT models.
+    Returns predictions from both models and a blended score.
+    """
+    # Get Beta prediction
+    beta_attempts = [
+        {'concept': att.concept, 'correct': att.correct}
+        for att in req.recent_attempts
+    ]
+    
+    beta_mastery = beta_kt.predict_mastery(
+        attempts=beta_attempts,
+        prior_mastery=req.prior_mastery
+    )
+    
+    # Get DKT prediction if available
+    dkt_mastery = {}
+    if dkt_predictor is not None and req.recent_attempts:
+        try:
+            dkt_attempts = []
+            for att in req.recent_attempts:
+                if att.question_id is not None:
+                    dkt_attempts.append({
+                        'question_id': att.question_id,
+                        'correct': att.correct
+                    })
+            
+            if dkt_attempts:
+                dkt_mastery = dkt_predictor.predict_mastery(dkt_attempts)
+        except Exception as e:
+            print(f"DKT prediction failed: {e}")
+    
+    # Blend predictions (weighted average: 40% Beta, 60% DKT if available)
+    blended_mastery = {}
+    all_concepts = set(beta_mastery.keys()) | set(dkt_mastery.keys())
+    
+    for concept in all_concepts:
+        beta_val = beta_mastery.get(concept, req.prior_mastery.get(concept, 0.5))
+        dkt_val = dkt_mastery.get(concept, beta_val)
+        
+        if concept in dkt_mastery:
+            # Both models available - blend
+            blended_mastery[concept] = 0.4 * beta_val + 0.6 * dkt_val
+        else:
+            # Only Beta available
+            blended_mastery[concept] = beta_val
+    
+    return {
+        "beta_prediction": beta_mastery,
+        "dkt_prediction": dkt_mastery if dkt_mastery else None,
+        "blended_prediction": blended_mastery,
+        "models_used": {
+            "beta": True,
+            "dkt": len(dkt_mastery) > 0
+        },
+        "ensemble_strategy": "weighted_average",
+        "weights": {"beta": 0.4, "dkt": 0.6} if dkt_mastery else {"beta": 1.0}
+    }
+
+
+@app.get("/evidence/learner_history/{learner_id}")
+async def get_learner_history(learner_id: str, limit: int = 20):
+    """
+    Get decision history for a specific learner.
+    """
+    history = evidence_tracker.get_learner_decision_history(learner_id, limit)
+    return {"learner_id": learner_id, "history": history, "count": len(history)}
 
 
 # Development server

@@ -1,0 +1,471 @@
+{
+  "variables": {
+    "name": "Variables and Data Types",
+    "description": "Understanding variables, primitive types, and type systems",
+    "subject": "programming",
+    "prerequisites": [],
+    "mastery_threshold": 0.7,
+    "resources": [
+      {
+        "id": "var_video_01",
+        "title": "Variables 101: Introduction to Programming",
+        "type": "video",
+        "difficulty": 0.2,
+        "duration_minutes": 15,
+        "url": "/resources/variables-intro-video",
+        "engagement_score": 0.9,
+        "modality": "visual"
+      },
+      {
+        "id": "var_interactive_01",
+        "title": "Interactive Variable Explorer",
+        "type": "interactive",
+        "difficulty": 0.3,
+        "duration_minutes": 20,
+        "url": "/resources/variables-interactive",
+        "engagement_score": 0.95,
+        "modality": "visual"
+      },
+      {
+        "id": "var_text_01",
+        "title": "Data Types Deep Dive",
+        "type": "text",
+        "difficulty": 0.4,
+        "duration_minutes": 25,
+        "url": "/resources/variables-text",
+        "engagement_score": 0.75,
+        "modality": "reading"
+      }
+    ]
+  },
+  "control_structures": {
+    "name": "Control Structures: Conditionals and Loops",
+    "description": "If-else statements, while loops, for loops, and flow control",
+    "subject": "programming",
+    "prerequisites": ["variables"],
+    "mastery_threshold": 0.65,
+    "resources": [
+      {
+        "id": "ctrl_video_01",
+        "title": "Mastering Loops and Conditionals",
+        "type": "video",
+        "difficulty": 0.4,
+        "duration_minutes": 30,
+        "url": "/resources/control-structures-video",
+        "engagement_score": 0.88,
+        "modality": "visual"
+      },
+      {
+        "id": "ctrl_quiz_01",
+        "title": "Control Flow Challenge Quiz",
+        "type": "quiz",
+        "difficulty": 0.5,
+        "duration_minutes": 15,
+        "url": "/resources/control-structures-quiz",
+        "engagement_score": 0.82,
+        "modality": "visual"
+      },
+      {
+        "id": "ctrl_interactive_01",
+        "title": "Loop Visualizer",
+        "type": "interactive",
+        "difficulty": 0.45,
+        "duration_minutes": 25,
+        "url": "/resources/loop-visualizer",
+        "engagement_score": 0.93,
+        "modality": "visual"
+      }
+    ]
+  },
+  "functions": {
+    "name": "Functions and Procedures",
+    "description": "Function definition, parameters, return values, and scope",
+    "subject": "programming",
+    "prerequisites": ["control_structures"],
+    "mastery_threshold": 0.6,
+    "resources": [
+      {
+        "id": "func_video_01",
+        "title": "Functions: Building Reusable Code",
+        "type": "video",
+        "difficulty": 0.5,
+        "duration_minutes": 35,
+        "url": "/resources/functions-video",
+        "engagement_score": 0.87,
+        "modality": "visual"
+      },
+      {
+        "id": "func_lab_01",
+        "title": "Function Laboratory",
+        "type": "lab",
+        "difficulty": 0.6,
+        "duration_minutes": 45,
+        "url": "/resources/functions-lab",
+        "engagement_score": 0.91,
+        "modality": "visual"
+      },
+      {
+        "id": "func_text_01",
+        "title": "Advanced Function Patterns",
+        "type": "text",
+        "difficulty": 0.65,
+        "duration_minutes": 30,
+        "url": "/resources/functions-advanced",
+        "engagement_score": 0.78,
+        "modality": "reading"
+      }
+    ]
+  },
+  "arrays": {
+    "name": "Arrays and Data Structures",
+    "description": "Working with arrays, lists, and basic data structures",
+    "subject": "programming",
+    "prerequisites": ["control_structures", "functions"],
+    "mastery_threshold": 0.5,
+    "resources": [
+      {
+        "id": "arr_video_01",
+        "title": "Arrays and Lists Explained",
+        "type": "video",
+        "difficulty": 0.55,
+        "duration_minutes": 30,
+        "url": "/resources/arrays-video",
+        "engagement_score": 0.86,
+        "modality": "visual"
+      },
+      {
+        "id": "arr_interactive_01",
+        "title": "Data Structure Visualizer",
+        "type": "interactive",
+        "difficulty": 0.6,
+        "duration_minutes": 40,
+        "url": "/resources/arrays-interactive",
+        "engagement_score": 0.94,
+        "modality": "visual"
+      },
+      {
+        "id": "arr_quiz_01",
+        "title": "Array Manipulation Challenge",
+        "type": "quiz",
+        "difficulty": 0.65,
+        "duration_minutes": 20,
+        "url": "/resources/arrays-quiz",
+        "engagement_score": 0.81,
+        "modality": "visual"
+      }
+    ]
+  },
+  "oop_basics": {
+    "name": "Object-Oriented Programming Basics",
+    "description": "Classes, objects, encapsulation, and basic OOP principles",
+    "subject": "programming",
+    "prerequisites": ["functions", "arrays"],
+    "mastery_threshold": 0.4,
+    "resources": [
+      {
+        "id": "oop_video_01",
+        "title": "Introduction to OOP Concepts",
+        "type": "video",
+        "difficulty": 0.65,
+        "duration_minutes": 40,
+        "url": "/resources/oop-intro-video",
+        "engagement_score": 0.85,
+        "modality": "visual"
+      },
+      {
+        "id": "oop_lab_01",
+        "title": "Build Your First Class",
+        "type": "lab",
+        "difficulty": 0.7,
+        "duration_minutes": 50,
+        "url": "/resources/oop-lab",
+        "engagement_score": 0.89,
+        "modality": "visual"
+      },
+      {
+        "id": "oop_text_01",
+        "title": "OOP Design Patterns for Beginners",
+        "type": "text",
+        "difficulty": 0.75,
+        "duration_minutes": 35,
+        "url": "/resources/oop-patterns",
+        "engagement_score": 0.76,
+        "modality": "reading"
+      }
+    ]
+  },
+  "algorithms_intro": {
+    "name": "Introduction to Algorithms",
+    "description": "Algorithm design, time complexity, and common algorithms",
+    "subject": "programming",
+    "prerequisites": ["functions", "arrays"],
+    "mastery_threshold": 0.45,
+    "resources": [
+      {
+        "id": "algo_video_01",
+        "title": "Algorithms: The Building Blocks",
+        "type": "video",
+        "difficulty": 0.7,
+        "duration_minutes": 45,
+        "url": "/resources/algorithms-intro",
+        "engagement_score": 0.88,
+        "modality": "visual"
+      },
+      {
+        "id": "algo_interactive_01",
+        "title": "Algorithm Visualizer",
+        "type": "interactive",
+        "difficulty": 0.75,
+        "duration_minutes": 50,
+        "url": "/resources/algorithm-visualizer",
+        "engagement_score": 0.96,
+        "modality": "visual"
+      },
+      {
+        "id": "algo_project_01",
+        "title": "Build a Sorting Algorithm",
+        "type": "project",
+        "difficulty": 0.8,
+        "duration_minutes": 90,
+        "url": "/resources/sorting-project",
+        "engagement_score": 0.92,
+        "modality": "visual"
+      }
+    ]
+  },
+  "algebra_basics": {
+    "name": "Algebra Fundamentals",
+    "description": "Basic algebraic operations, equations, and expressions",
+    "subject": "math",
+    "prerequisites": [],
+    "mastery_threshold": 0.75,
+    "resources": [
+      {
+        "id": "alg_video_01",
+        "title": "Algebra Made Simple",
+        "type": "video",
+        "difficulty": 0.25,
+        "duration_minutes": 30,
+        "url": "/resources/algebra-basics",
+        "engagement_score": 0.87,
+        "modality": "visual"
+      },
+      {
+        "id": "alg_interactive_01",
+        "title": "Interactive Equation Solver",
+        "type": "interactive",
+        "difficulty": 0.3,
+        "duration_minutes": 35,
+        "url": "/resources/algebra-interactive",
+        "engagement_score": 0.92,
+        "modality": "visual"
+      },
+      {
+        "id": "alg_quiz_01",
+        "title": "Algebra Practice Problems",
+        "type": "quiz",
+        "difficulty": 0.35,
+        "duration_minutes": 25,
+        "url": "/resources/algebra-quiz",
+        "engagement_score": 0.83,
+        "modality": "visual"
+      }
+    ]
+  },
+  "linear_equations": {
+    "name": "Linear Equations and Systems",
+    "description": "Solving linear equations, graphing lines, and systems of equations",
+    "subject": "math",
+    "prerequisites": ["algebra_basics"],
+    "mastery_threshold": 0.7,
+    "resources": [
+      {
+        "id": "lin_video_01",
+        "title": "Linear Equations Explained",
+        "type": "video",
+        "difficulty": 0.4,
+        "duration_minutes": 35,
+        "url": "/resources/linear-equations-video",
+        "engagement_score": 0.86,
+        "modality": "visual"
+      },
+      {
+        "id": "lin_interactive_01",
+        "title": "Graph Plotter",
+        "type": "interactive",
+        "difficulty": 0.45,
+        "duration_minutes": 40,
+        "url": "/resources/graph-plotter",
+        "engagement_score": 0.94,
+        "modality": "visual"
+      },
+      {
+        "id": "lin_text_01",
+        "title": "Systems of Equations Guide",
+        "type": "text",
+        "difficulty": 0.5,
+        "duration_minutes": 30,
+        "url": "/resources/systems-guide",
+        "engagement_score": 0.79,
+        "modality": "reading"
+      }
+    ]
+  },
+  "calculus_intro": {
+    "name": "Introduction to Calculus",
+    "description": "Limits, derivatives, and basic integration",
+    "subject": "math",
+    "prerequisites": ["linear_equations", "algebra_basics"],
+    "mastery_threshold": 0.6,
+    "resources": [
+      {
+        "id": "calc_video_01",
+        "title": "Calculus: The Essence",
+        "type": "video",
+        "difficulty": 0.7,
+        "duration_minutes": 50,
+        "url": "/resources/calculus-intro",
+        "engagement_score": 0.91,
+        "modality": "visual"
+      },
+      {
+        "id": "calc_interactive_01",
+        "title": "Derivative Visualizer",
+        "type": "interactive",
+        "difficulty": 0.75,
+        "duration_minutes": 45,
+        "url": "/resources/derivative-visualizer",
+        "engagement_score": 0.95,
+        "modality": "visual"
+      },
+      {
+        "id": "calc_lab_01",
+        "title": "Calculus Lab: Real-World Applications",
+        "type": "lab",
+        "difficulty": 0.8,
+        "duration_minutes": 60,
+        "url": "/resources/calculus-lab",
+        "engagement_score": 0.88,
+        "modality": "visual"
+      }
+    ]
+  },
+  "kinematics": {
+    "name": "Kinematics: Motion and Velocity",
+    "description": "Position, velocity, acceleration, and equations of motion",
+    "subject": "physics",
+    "prerequisites": ["algebra_basics"],
+    "mastery_threshold": 0.65,
+    "resources": [
+      {
+        "id": "kin_video_01",
+        "title": "Understanding Motion",
+        "type": "video",
+        "difficulty": 0.45,
+        "duration_minutes": 35,
+        "url": "/resources/kinematics-video",
+        "engagement_score": 0.89,
+        "modality": "visual"
+      },
+      {
+        "id": "kin_interactive_01",
+        "title": "Motion Simulator",
+        "type": "interactive",
+        "difficulty": 0.5,
+        "duration_minutes": 40,
+        "url": "/resources/motion-simulator",
+        "engagement_score": 0.93,
+        "modality": "visual"
+      },
+      {
+        "id": "kin_lab_01",
+        "title": "Virtual Physics Lab: Motion",
+        "type": "lab",
+        "difficulty": 0.55,
+        "duration_minutes": 50,
+        "url": "/resources/physics-lab-motion",
+        "engagement_score": 0.90,
+        "modality": "visual"
+      }
+    ]
+  },
+  "newton_laws": {
+    "name": "Newton's Laws of Motion",
+    "description": "Understanding force, mass, acceleration, and Newton's three laws",
+    "subject": "physics",
+    "prerequisites": ["kinematics"],
+    "mastery_threshold": 0.6,
+    "resources": [
+      {
+        "id": "newton_video_01",
+        "title": "Newton's Laws Explained",
+        "type": "video",
+        "difficulty": 0.55,
+        "duration_minutes": 40,
+        "url": "/resources/newton-laws-video",
+        "engagement_score": 0.87,
+        "modality": "visual"
+      },
+      {
+        "id": "newton_interactive_01",
+        "title": "Force and Motion Interactive",
+        "type": "interactive",
+        "difficulty": 0.6,
+        "duration_minutes": 45,
+        "url": "/resources/force-interactive",
+        "engagement_score": 0.92,
+        "modality": "visual"
+      },
+      {
+        "id": "newton_project_01",
+        "title": "Build a Physics Simulation",
+        "type": "project",
+        "difficulty": 0.75,
+        "duration_minutes": 90,
+        "url": "/resources/physics-simulation-project",
+        "engagement_score": 0.94,
+        "modality": "visual"
+      }
+    ]
+  },
+  "energy_work": {
+    "name": "Work, Energy, and Power",
+    "description": "Kinetic energy, potential energy, work-energy theorem, and conservation",
+    "subject": "physics",
+    "prerequisites": ["newton_laws"],
+    "mastery_threshold": 0.55,
+    "resources": [
+      {
+        "id": "energy_video_01",
+        "title": "Energy and Work Fundamentals",
+        "type": "video",
+        "difficulty": 0.6,
+        "duration_minutes": 38,
+        "url": "/resources/energy-video",
+        "engagement_score": 0.88,
+        "modality": "visual"
+      },
+      {
+        "id": "energy_lab_01",
+        "title": "Energy Conservation Lab",
+        "type": "lab",
+        "difficulty": 0.65,
+        "duration_minutes": 55,
+        "url": "/resources/energy-lab",
+        "engagement_score": 0.91,
+        "modality": "visual"
+      },
+      {
+        "id": "energy_quiz_01",
+        "title": "Energy Problems Challenge",
+        "type": "quiz",
+        "difficulty": 0.7,
+        "duration_minutes": 30,
+        "url": "/resources/energy-quiz",
+        "engagement_score": 0.84,
+        "modality": "visual"
+      }
+    ]
+  }
+}
+
