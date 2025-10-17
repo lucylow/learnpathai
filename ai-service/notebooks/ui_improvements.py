@@ -2,11 +2,29 @@
 # This file contains reusable visualization and formatting functions
 
 import matplotlib.pyplot as plt
-import seaborn as sns
 import numpy as np
-from IPython.display import HTML, display
 import pandas as pd
 from sklearn.metrics import roc_curve, confusion_matrix, precision_recall_curve
+
+# Optional imports with fallbacks
+try:
+    import seaborn as sns
+    HAS_SEABORN = True
+except ImportError:
+    HAS_SEABORN = False
+    print("⚠️  seaborn not available - using matplotlib defaults")
+
+try:
+    from IPython.display import HTML, display
+    HAS_IPYTHON = True
+except ImportError:
+    HAS_IPYTHON = False
+    print("⚠️  IPython.display not available - HTML output disabled")
+    # Fallback display function
+    def display(obj):
+        print(obj)
+    def HTML(text):
+        return text
 
 def create_metrics_dashboard(metrics_dict, model_name="Model"):
     """Create a beautiful HTML dashboard for model metrics"""
