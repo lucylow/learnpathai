@@ -1,4 +1,4 @@
-import React from "react";
+
 
 export default function MasteryMeter({ value }: { value: number }) {
   const percent = Math.round(value * 100);

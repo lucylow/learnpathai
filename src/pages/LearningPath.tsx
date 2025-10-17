@@ -7,7 +7,7 @@ import PathStepCard from "@/components/learning/PathStepCard";
 import { usePath } from "@/hooks/usePath";
 import { track } from "@/utils/telemetry";
 import { Loader2, RefreshCw, Sparkles } from "lucide-react";
-import type { Attempt } from "@/api/paths";
+import type { Attempt } from "@/types/path";
 
 export default function LearningPath() {
   const [attempts, setAttempts] = useState<Attempt[]>([]);

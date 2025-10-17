@@ -1,6 +1,6 @@
-import { PathStep, Attempt } from "../api/paths";
+import type { PathStep, Attempt, PathResponse } from "../types/path";
 
-export async function generatePath(opts: { targets?: string[]; attempts?: Attempt[] }) {
+export async function generatePath(opts: { targets?: string[]; attempts?: Attempt[] }): Promise<PathResponse> {
   // Simulate API delay
   await new Promise(resolve => setTimeout(resolve, 800));
 

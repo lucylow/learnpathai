@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -6,7 +6,7 @@ import { ChevronDown, ChevronUp, Info } from "lucide-react";
 import MasteryMeter from "./MasteryMeter";
 import ResourceCard from "./ResourceCard";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import type { PathStep } from "@/api/paths";
+import type { PathStep } from "@/types/path";
 
 export default function PathStepCard({ step, index }: { step: PathStep; index: number }) {
   const [expanded, setExpanded] = useState(false);
