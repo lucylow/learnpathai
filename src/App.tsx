@@ -26,6 +26,8 @@ const Docs = lazy(() => import("./pages/Docs"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const AccessibilitySettingsPage = lazy(() => import("./pages/AccessibilitySettings"));
+const JudgeDemo = lazy(() => import("./pages/JudgeDemo"));
+const CollaborativeLearning = lazy(() => import("./pages/CollaborativeLearning"));
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -49,6 +51,8 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/about" element={<About />} />
               <Route path="/accessibility-settings" element={<AccessibilitySettingsPage />} />
+              <Route path="/judge-demo" element={<JudgeDemo />} />
+              <Route path="/collaborative-learning" element={<CollaborativeLearning />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

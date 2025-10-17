@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import Layout from '@/components/Layout';
+import { Layout } from '@/components/Layout';
 import AccessibilitySettings from '@/components/accessibility/AccessibilitySettings';
 import { useAccessibility } from '@/contexts/AccessibilityContext';
 import { Card, CardContent } from '@/components/ui/card';

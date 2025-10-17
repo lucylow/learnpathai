@@ -21,6 +21,11 @@ from rag_explainer import RAGExplainer
 from resource_ranker import ResourceRanker, UserProfile, Resource
 from explainer_service import ExplanationGenerator
 from evidence_tracker import EvidenceTracker
+from collaboration_service import (
+    add_collaboration_routes,
+    GroupQuizRequest, FacilitationRequest,
+    RoleAssignmentRequest, SummaryRequest
+)
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -638,6 +643,14 @@ async def get_learner_history(learner_id: str, limit: int = 20):
     """
     history = evidence_tracker.get_learner_decision_history(learner_id, limit)
     return {"learner_id": learner_id, "history": history, "count": len(history)}
+
+
+# ============================================================
+# COLLABORATIVE LEARNING ENDPOINTS
+# ============================================================
+
+# Add collaboration routes for group learning features
+add_collaboration_routes(app)
 
 
 # Development server

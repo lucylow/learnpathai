@@ -26,6 +26,12 @@ const navigationItems = [
         icon: Sparkles,
       },
       {
+        title: "Collaborative Learning",
+        href: "/collaborative-learning",
+        description: "Real-time group study with AI facilitation",
+        icon: Users,
+      },
+      {
         title: "Demo",
         href: "/learning-path",
         description: "Try our interactive learning path demo",
