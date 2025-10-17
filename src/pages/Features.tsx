@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Layout } from "@/components/Layout";
 import { Brain, GitBranch, Zap, BarChart3, FileText, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -50,23 +51,7 @@ const features = [
 
 export default function Features() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
-        <div className="mx-auto max-w-7xl px-6 py-4 flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            LearnPath AI
-          </Link>
-          <nav className="flex gap-6">
-            <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">Home</Link>
-            <Link to="/learning-path" className="text-muted-foreground hover:text-foreground transition-colors">Demo</Link>
-            <Link to="/features" className="text-foreground font-medium">Features</Link>
-            <Link to="/impact" className="text-muted-foreground hover:text-foreground transition-colors">Impact</Link>
-            <Link to="/team" className="text-muted-foreground hover:text-foreground transition-colors">Team</Link>
-          </nav>
-        </div>
-      </header>
-
+    <Layout>
       <div className="container mx-auto px-6 py-12 max-w-6xl">
         <div className="mb-12 text-center">
           <Badge className="mb-4">Core Capabilities</Badge>
@@ -152,6 +137,6 @@ export default function Features() {
           </Link>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }

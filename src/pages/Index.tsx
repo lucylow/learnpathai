@@ -1,37 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { FeatureCard } from "@/components/FeatureCard";
+import { Layout } from "@/components/Layout";
 import { Brain, Target, Zap, TrendingUp, Users, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-ai-learning.jpg";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-[var(--gradient-hero)]">
-      {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
-        <div className="mx-auto max-w-7xl px-6 py-4 flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            LearnPath AI
-          </Link>
-          <nav className="flex gap-6">
-            <Link to="/" className="text-foreground font-medium">
-              Home
-            </Link>
-            <Link to="/learning-path" className="text-muted-foreground hover:text-foreground transition-colors">
-              Demo
-            </Link>
-            <Link to="/features" className="text-muted-foreground hover:text-foreground transition-colors">
-              Features
-            </Link>
-            <Link to="/impact" className="text-muted-foreground hover:text-foreground transition-colors">
-              Impact
-            </Link>
-            <Link to="/team" className="text-muted-foreground hover:text-foreground transition-colors">
-              Team
-            </Link>
-          </nav>
-        </div>
-      </header>
+    <Layout className="bg-[var(--gradient-hero)]">
 
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 pt-20 pb-32">
@@ -144,14 +120,7 @@ const Index = () => {
           </Button>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="border-t border-border bg-background/80 backdrop-blur-sm px-6 py-12">
-        <div className="mx-auto max-w-7xl text-center text-muted-foreground">
-          <p>&copy; 2025 LearnPath AI. All rights reserved.</p>
-        </div>
-      </footer>
-    </div>
+    </Layout>
   );
 };
 

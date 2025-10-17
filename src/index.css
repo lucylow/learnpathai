@@ -7,6 +7,18 @@ All colors MUST be HSL.
 */
 
 @layer base {
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Better font rendering */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;

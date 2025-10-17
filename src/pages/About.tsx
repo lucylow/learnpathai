@@ -1,32 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Layout } from "@/components/Layout";
 import { Brain, Users, Zap, Target, BookOpen, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
-        <div className="mx-auto max-w-7xl px-6 py-4 flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            LearnPath AI
-          </Link>
-          <nav className="flex gap-6">
-            <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
-              Home
-            </Link>
-            <Link to="/dashboard" className="text-muted-foreground hover:text-foreground transition-colors">
-              Dashboard
-            </Link>
-            <Link to="/about" className="text-foreground font-medium">
-              About
-            </Link>
-          </nav>
-        </div>
-      </header>
-
-      {/* Main Content */}
+    <Layout>
       <main className="mx-auto max-w-7xl px-6 py-12">
         {/* Hero Section */}
         <section className="text-center mb-16 space-y-6">
@@ -175,14 +155,7 @@ const About = () => {
           </div>
         </section>
       </main>
-
-      {/* Footer */}
-      <footer className="border-t border-border bg-background/80 backdrop-blur-sm px-6 py-12">
-        <div className="mx-auto max-w-7xl text-center text-muted-foreground">
-          <p>&copy; 2025 LearnPath AI. All rights reserved.</p>
-        </div>
-      </footer>
-    </div>
+    </Layout>
   );
 };
 

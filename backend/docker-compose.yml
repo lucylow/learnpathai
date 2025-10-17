@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  backend:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - KT_SERVICE_URL=http://kt-service:8001/predict_mastery
+      - DB_FILE=./data/db.json
+    volumes:
+      - ./:/app
+  kt-service:
+    image: python:3.10-slim
+    command: bash -c "pip install fastapi uvicorn pydantic && python /app/ai-service/kt_service.py"
+    volumes:
+      - ../:/app  # assumes repo root holds ai-service/kt_service.py
+    ports:
+      - "8001:8001"
+

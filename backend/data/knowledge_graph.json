@@ -1,0 +1,7 @@
+{
+  "variables": { "prereqs": [], "resources": ["res_vars_1"] },
+  "loops": { "prereqs": ["variables"], "resources": ["res_loops_1"] },
+  "functions": { "prereqs": ["variables", "loops"], "resources": ["res_funcs_1"] },
+  "arrays": { "prereqs": ["loops"], "resources": ["res_arrays_1"] },
+  "project": { "prereqs": ["functions", "arrays"], "resources": ["res_project_1"] }
+}

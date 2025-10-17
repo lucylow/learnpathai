@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Layout } from "@/components/Layout";
 import { usePath } from "@/hooks/usePath";
 import { track } from "@/utils/telemetry";
 import { Loader2, RefreshCw, Sparkles } from "lucide-react";
@@ -20,19 +20,7 @@ export default function LearningPath() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
-        <div className="mx-auto max-w-7xl px-6 py-4 flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            LearnPath AI
-          </Link>
-          <nav className="flex gap-6">
-            <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">Home</Link>
-            <Link to="/dashboard" className="text-muted-foreground hover:text-foreground transition-colors">Dashboard</Link>
-            <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">About</Link>
-          </nav>
-        </div>
-      </header>
+    <Layout>
 
       <div className="border-b border-border bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-6 py-12 max-w-4xl">
@@ -142,6 +130,6 @@ export default function LearningPath() {
           </div>
         )}
       </div>
-    </div>
+    </Layout>
   );
 }

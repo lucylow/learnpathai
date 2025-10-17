@@ -1,0 +1,7 @@
+{
+  "res_vars_1": { "id": "res_vars_1", "title": "Variables — 5 min video", "type": "video", "url": "https://youtu.be/example_vars" },
+  "res_loops_1": { "id": "res_loops_1", "title": "Loops — 6 min video", "type": "video", "url": "https://youtu.be/example_loops" },
+  "res_funcs_1": { "id": "res_funcs_1", "title": "Functions — article", "type": "article", "url": "https://example.com/functions" },
+  "res_arrays_1": { "id": "res_arrays_1", "title": "Arrays — interactive", "type": "interactive", "url": "https://example.com/arrays" },
+  "res_project_1": { "id": "res_project_1", "title": "Capstone project", "type": "project", "url": "https://example.com/project" }
+}

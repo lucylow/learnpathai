@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
 import LearningPath from "./pages/LearningPath";
+import LearningPathViewer from "./pages/LearningPathViewer";
 import Impact from "./pages/Impact";
 import Features from "./pages/Features";
 import Team from "./pages/Team";
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/learning-path" element={<LearningPath />} />
+          <Route path="/learning-path-viewer" element={<LearningPathViewer />} />
           <Route path="/features" element={<Features />} />
           <Route path="/impact" element={<Impact />} />
           <Route path="/team" element={<Team />} />

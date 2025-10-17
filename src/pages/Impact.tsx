@@ -2,6 +2,7 @@ import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from "chart.js";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Layout } from "@/components/Layout";
 import { TrendingUp, Users, Clock, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -39,23 +40,7 @@ export default function Impact() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
-        <div className="mx-auto max-w-7xl px-6 py-4 flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            LearnPath AI
-          </Link>
-          <nav className="flex gap-6">
-            <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">Home</Link>
-            <Link to="/learning-path" className="text-muted-foreground hover:text-foreground transition-colors">Demo</Link>
-            <Link to="/features" className="text-muted-foreground hover:text-foreground transition-colors">Features</Link>
-            <Link to="/impact" className="text-foreground font-medium">Impact</Link>
-            <Link to="/team" className="text-muted-foreground hover:text-foreground transition-colors">Team</Link>
-          </nav>
-        </div>
-      </header>
-
+    <Layout>
       <div className="container mx-auto px-6 py-12 max-w-6xl">
         <div className="mb-8">
           <Badge className="mb-4">Measurable Results</Badge>
@@ -174,6 +159,6 @@ export default function Impact() {
           </Link>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }
