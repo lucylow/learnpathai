@@ -1,6 +1,6 @@
 // src/components/AITutorChat.tsx
 import { useState, useRef, useEffect } from 'react';
-import { Send, Bot, User, Sparkles, X, Minimize2, Maximize2 } from 'lucide-react';
+import { Send, Bot, User, Sparkles, X, Minimize2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -64,7 +64,7 @@ export const AITutorChat: React.FC<AITutorChatProps> = ({
     }
     
     if (lowerMessage.includes('recommend') || lowerMessage.includes('next') || lowerMessage.includes('should i learn')) {
-      const recommendations = [];
+      const recommendations: string[] = [];
       Object.entries(studentMastery).forEach(([concept, mastery]) => {
         if (mastery < 0.4) {
           recommendations.push(`📕 ${concept} (${Math.round(mastery * 100)}% - needs attention)`);

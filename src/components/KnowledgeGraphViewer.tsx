@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import { Card } from './ui/card';
-import { Badge } from './ui/badge';
 
 interface Node extends d3.SimulationNodeDatum {
   id: string;
@@ -106,7 +105,7 @@ export const KnowledgeGraphViewer: React.FC<KnowledgeGraphProps> = ({
       .enter().append('g')
       .attr('class', 'node')
       .style('cursor', 'pointer')
-      .on('click', (event, d) => {
+      .on('click', (_, d) => {
         setSelectedNode(d);
         onNodeClick?.(d);
       })

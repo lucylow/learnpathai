@@ -29,6 +29,7 @@ export const MasteryGauge: React.FC<MasteryGaugeProps> = ({
       return () => clearTimeout(timer);
     } else {
       setDisplayMastery(mastery);
+      return undefined;
     }
   }, [mastery, animated]);
 

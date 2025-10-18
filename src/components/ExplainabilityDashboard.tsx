@@ -131,7 +131,7 @@ export const ExplainabilityDashboard: React.FC<ExplainabilityDashboardProps> = (
                       'bg-gray-400'
                     }`} />
                     <span className="font-medium text-gray-900">{feature.feature}</span>
-                    <Info className="w-4 h-4 text-gray-400 cursor-help" title={feature.description} />
+                    <Info className="w-4 h-4 text-gray-400 cursor-help" />
                   </div>
                   <span className="text-sm font-semibold text-gray-700">
                     {Math.round(feature.importance * 100)}%
