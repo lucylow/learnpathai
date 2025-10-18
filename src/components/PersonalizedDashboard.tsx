@@ -10,10 +10,7 @@ interface DashboardProps {
   timeRange?: 'week' | 'month' | 'all';
 }
 
-export const PersonalizedDashboard: React.FC<DashboardProps> = ({
-  userId = 'demo',
-  timeRange = 'week'
-}) => {
+export const PersonalizedDashboard: React.FC<DashboardProps> = () => {
   // Mock data - replace with actual API calls
   const masteryOverTime = [
     { day: 'Mon', mastery: 45, timeSpent: 35 },
@@ -58,28 +55,24 @@ export const PersonalizedDashboard: React.FC<DashboardProps> = ({
           icon={<Clock className="w-6 h-6" />}
           label="Time Today" 
           value="2h 15m" 
-          change="+12%"
           color="blue" 
         />
         <StatsCard 
           icon={<TrendingUp className="w-6 h-6" />}
           label="Avg Mastery" 
           value="64%" 
-          change="+8%"
           color="emerald" 
         />
         <StatsCard 
           icon={<Target className="w-6 h-6" />}
           label="Goals Met" 
           value="3/5" 
-          change="60%"
           color="amber" 
         />
         <StatsCard 
           icon={<Award className="w-6 h-6" />}
           label="Streak" 
           value="7 days" 
-          change="🔥"
           color="purple" 
         />
       </div>
@@ -190,7 +183,7 @@ export const PersonalizedDashboard: React.FC<DashboardProps> = ({
                 fill="#8884d8"
                 dataKey="engagement"
               >
-                {learningStyle.map((entry, index) => (
+                {learningStyle.map((_, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
@@ -314,7 +307,6 @@ const StatsCard: React.FC<{
   icon: React.ReactNode;
   label: string;
   value: string;
-  change: string;
   color: 'blue' | 'emerald' | 'amber' | 'purple';
 }> = ({ icon, label, value, color }) => {
   const colorClasses = {

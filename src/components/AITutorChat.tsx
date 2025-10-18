@@ -23,7 +23,6 @@ interface AITutorChatProps {
 
 export const AITutorChat: React.FC<AITutorChatProps> = ({
   studentMastery = {},
-  currentConcept,
   onClose,
   minimized = false,
   onToggleMinimize

@@ -8,7 +8,7 @@ const shimmer = {
   transition: {
     duration: 2,
     repeat: Infinity,
-    ease: 'linear',
+    ease: 'linear' as const,
   },
 };
 
@@ -128,7 +128,7 @@ export const GraphSkeleton = () => (
 );
 
 // Table Skeleton
-export const TableSkeleton = ({ rows = 5 }) => (
+export const TableSkeleton = ({ rows = 5 }: { rows?: number }) => (
   <div className="space-y-3">
     {/* Header */}
     <motion.div
@@ -150,7 +150,7 @@ export const TableSkeleton = ({ rows = 5 }) => (
 );
 
 // Text Block Skeleton
-export const TextSkeleton = ({ lines = 3 }) => (
+export const TextSkeleton = ({ lines = 3 }: { lines?: number }) => (
   <div className="space-y-2">
     {Array.from({ length: lines }).map((_, i) => (
       <motion.div
@@ -167,7 +167,7 @@ export const TextSkeleton = ({ lines = 3 }) => (
 );
 
 // Avatar Skeleton
-export const AvatarSkeleton = ({ size = 'md' }) => {
+export const AvatarSkeleton = ({ size = 'md' }: { size?: 'sm' | 'md' | 'lg' | 'xl' }) => {
   const sizeClasses = {
     sm: 'w-8 h-8',
     md: 'w-12 h-12',
@@ -185,7 +185,7 @@ export const AvatarSkeleton = ({ size = 'md' }) => {
 };
 
 // Button Skeleton
-export const ButtonSkeleton = ({ width = 'w-32' }) => (
+export const ButtonSkeleton = ({ width = 'w-32' }: { width?: string }) => (
   <motion.div
     className={`h-10 ${width} ${skeletonClass} rounded-lg`}
     style={{ backgroundSize: '200% 100%' }}
@@ -225,7 +225,7 @@ export const CardSkeleton = () => (
 );
 
 // Loading Spinner (for fallback)
-export const LoadingSpinner = ({ size = 'md', label = 'Loading...' }) => {
+export const LoadingSpinner = ({ size = 'md', label = 'Loading...' }: { size?: 'sm' | 'md' | 'lg' | 'xl'; label?: string }) => {
   const sizeClasses = {
     sm: 'w-4 h-4 border-2',
     md: 'w-8 h-8 border-3',

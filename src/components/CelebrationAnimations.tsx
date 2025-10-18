@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Trophy, Flame, Star, Sparkles, Award } from 'lucide-react';
+import { Trophy, Flame, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 // Custom hook for celebration effects

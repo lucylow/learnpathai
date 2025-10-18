@@ -403,33 +403,6 @@ export default function JudgeDemo() {
                     />
                   </CardContent>
                 </Card>
-
-                {/* Demo Script */}
-                <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-200">
-                  <CardHeader>
-                    <CardTitle className="text-base flex items-center gap-2">
-                      <Sparkles className="h-5 w-5 text-purple-600" />
-                      Demo Script for Judges
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-2 text-sm">
-                    <p className="font-medium">
-                      "Meet Alex, a student learning Python. Watch what happens when they struggle with a concept..."
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>Step 1:</strong> Click "Simulate Quiz Failure" to trigger adaptation
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>Step 2:</strong> Watch the system recalculate the path in real-time
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>Step 3:</strong> Notice how targeted remediation is automatically inserted
-                    </p>
-                    <p className="italic text-purple-700 mt-4">
-                      "LearnPath AI just recalculated Alex's route and added a 10-minute loop fundamentals review—personalized support exactly when needed!"
-                    </p>
-                  </CardContent>
-                </Card>
               </div>
             )}
 
@@ -501,35 +474,6 @@ export default function JudgeDemo() {
                       decisionId={demoEvidenceData.decision_id}
                       evidenceData={demoEvidenceData}
                     />
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-200">
-                  <CardHeader>
-                    <CardTitle className="text-base flex items-center gap-2">
-                      <Sparkles className="h-5 w-5 text-green-600" />
-                      Demo Script for Judges
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-2 text-sm">
-                    <p className="font-medium">
-                      "For complete transparency, we expose the entire decision pipeline..."
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>Tab 1 - Provenance:</strong> Show the 4-step decision pipeline
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>Tab 2 - Events:</strong> Show raw learning event data
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>Tab 3 - Resources:</strong> Show which resources were considered
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>Tab 4 - Citations:</strong> Show data sources with IDs
-                    </p>
-                    <p className="italic text-green-700 mt-4">
-                      "Teachers can audit any decision. Parents can understand why content was chosen. This is accountable AI!"
-                    </p>
                   </CardContent>
                 </Card>
               </div>
@@ -642,32 +586,6 @@ export default function JudgeDemo() {
                         </motion.div>
                       ))}
                     </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gradient-to-r from-orange-50 to-yellow-50 border-2 border-orange-200">
-                  <CardHeader>
-                    <CardTitle className="text-base flex items-center gap-2">
-                      <Sparkles className="h-5 w-5 text-orange-600" />
-                      Demo Script for Judges
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-2 text-sm">
-                    <p className="font-medium">
-                      "We don't just recommend popular content—we recommend what WORKS..."
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>Point out:</strong> Success rate shows real student outcomes (87% pass after this video)
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>Point out:</strong> Style match shows personalization (92% match for visual learners)
-                    </p>
-                    <p className="text-gray-700">
-                      <strong>Point out:</strong> Engagement shows student satisfaction
-                    </p>
-                    <p className="italic text-orange-700 mt-4">
-                      "Every resource is ranked by OUTCOMES—what actually helps students succeed, not just what's trendy!"
-                    </p>
                   </CardContent>
                 </Card>
               </div>
