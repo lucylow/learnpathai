@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play, Sparkles, Users, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   const [currentWord, setCurrentWord] = useState(0);
@@ -91,18 +92,22 @@ const HeroSection = () => {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="flex flex-col sm:flex-row gap-3 sm:gap-4"
           >
-            <button className="group relative bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto">
-              <span className="flex items-center justify-center gap-2">
-                Start Learning Free
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 blur-lg transition-opacity duration-300 -z-10"></div>
-            </button>
+            <Link to="/dashboard" className="w-full sm:w-auto">
+              <button className="group relative bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full">
+                <span className="flex items-center justify-center gap-2">
+                  Start Learning Free
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 blur-lg transition-opacity duration-300 -z-10"></div>
+              </button>
+            </Link>
 
-            <button className="group flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-gray-700 hover:text-gray-900 transition-colors duration-300 border-2 border-gray-300 hover:border-gray-400 w-full sm:w-auto">
-              <Play className="w-4 h-4 sm:w-5 sm:h-5" />
-              Watch Demo
-            </button>
+            <Link to="/learning-path" className="w-full sm:w-auto">
+              <button className="group flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-gray-700 hover:text-gray-900 transition-colors duration-300 border-2 border-gray-300 hover:border-gray-400 w-full">
+                <Play className="w-4 h-4 sm:w-5 sm:h-5" />
+                Watch Demo
+              </button>
+            </Link>
           </motion.div>
         </motion.div>
 

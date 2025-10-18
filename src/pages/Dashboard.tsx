@@ -173,9 +173,13 @@ const Dashboard = () => {
                   <span>👨‍🏫 {course.instructor}</span>
                   <span>⭐ {course.rating}/5.0</span>
                 </div>
-                <div className="flex gap-4">
-                  <Button size="sm">Continue Learning</Button>
-                  <Button size="sm" variant="outline">View Details</Button>
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                  <Link to="/learning-path" className="flex-1 sm:flex-initial">
+                    <Button size="sm" className="w-full sm:w-auto">Continue Learning</Button>
+                  </Link>
+                  <Link to={`/learning-path?course=${course.id}`} className="flex-1 sm:flex-initial">
+                    <Button size="sm" variant="outline" className="w-full sm:w-auto">View Details</Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>

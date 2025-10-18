@@ -10,6 +10,7 @@ import {
   Users,
   Zap
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const FeaturesGrid = () => {
   const features = [
@@ -142,9 +143,11 @@ const FeaturesGrid = () => {
             <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 max-w-2xl mx-auto px-4">
               Join thousands of students who are already accelerating their learning with AI
             </p>
-            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto">
-              Start Your Journey Today
-            </button>
+            <Link to="/dashboard">
+              <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto">
+                Start Your Journey Today
+              </button>
+            </Link>
           </div>
         </motion.div>
       </div>
